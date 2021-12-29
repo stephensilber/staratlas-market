@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import useSWR from "swr";
 import { Loader, Text, Badge, Kbd } from "@mantine/core";
+import MarketDataFeed from "../../components/MarketDataFeed";
 import { useHotkeys } from "@mantine/hooks";
 import {
   colorForRarity,
@@ -12,6 +13,7 @@ import {
   colorForItemType,
 } from "../../nfts";
 import { nftForMarket } from "../../nfts";
+import { fetchNFTs } from "../api/nfts";
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 async function getMarketData({ market }) {
@@ -19,36 +21,82 @@ async function getMarketData({ market }) {
   return await res.json();
 }
 
-function MarketSize({ title, data }) {
+function MarketSize({ title, data, conversion }) {
   return (
     <div className="flex flex-col">
       <div className="font-bold text-lg">{title}</div>
       {!data.length && <div>None</div>}
       {data.map((x) => (
         <div className="flex flex-row justify-start gap-x-6">
-          <p className="w-8 font-mono text-xs">x{x.size}</p>
-          <p className="font-mono">{x.price}</p>
+          <p className="w-12 font-mono text-xs">x{x.size}</p>
+          <p
+            className={`font-mono ${conversion && "text-green-300"}`}
+            alt={x.price}
+          >
+            {!conversion && x.price}{" "}
+            {conversion && `$${(x.price * conversion).toFixed(2)}`}
+          </p>
         </div>
       ))}
     </div>
   );
 }
 
-const Detail = ({ market, cachedNft }) => {
-  const homeRef = useRef(null);
+function MarketOrderBook({ market, nft, conversion }) {
   const { data, isValidating, error } = useSWR(
-    `/api/market/${market}`,
+    `/api/market/${market.id}`,
     fetcher,
     {
       refreshInterval: 3000,
       revalidateOnFocus: true,
       revalidateOnReconnect: true,
+      initialData: { bids: [], asks: [] },
     }
   );
 
-  useHotkeys([["shift+H", () => homeRef.current.click()]]);
+  return (
+    <div className="flex flex-col gap-y-3 w-full">
+      <div className="flex flex-row justify-start items-center gap-x-4">
+        <div className="font-bold text-xl">
+          Orders{" "}
+          <span className="font-light text-md">({market.quotePair})</span>
+        </div>
+        {isValidating && (
+          <Loader
+            color={nft ? colorForRarity(nft.attributes.rarity) : "white"}
+            size="xs"
+            variant="dots"
+          />
+        )}
+      </div>
+      {data && (
+        <div className="flex flex-row gap-x-24 w-full">
+          <MarketSize
+            conversion={market.quotePair == "ATLAS" ? conversion : null}
+            title="Asks"
+            data={data.asks}
+            flipped
+          />
+          <MarketSize
+            conversion={market.quotePair == "ATLAS" ? conversion : null}
+            title="Bids"
+            data={data.bids}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
 
-  const nft = data ? data.nft : cachedNft;
+const Detail = ({ market, markets, nft }) => {
+  const homeRef = useRef(null);
+
+  const { data } = useSWR(`/api/price`, fetcher, {
+    refreshInterval: 10000,
+    initialData: {},
+  });
+
+  useHotkeys([["shift+H", () => homeRef.current.click()]]);
 
   if (!nft) {
     return null;
@@ -101,6 +149,9 @@ const Detail = ({ market, cachedNft }) => {
               >
                 {nft.name}
               </Text>
+              <p className="text-gray-300 text-base font-mono font-bold my-2">
+                {nft.symbol}
+              </p>
               <p className="text-gray-300 text-base">{nft.description}</p>
             </div>
             <div className="pt-4 pb-2">
@@ -132,24 +183,18 @@ const Detail = ({ market, cachedNft }) => {
             </div>
           </div>
         </div>
-        {data && (
-          <div className="flex flex-col gap-y-3 w-full">
-            <div className="flex flex-row justify-start items-center gap-x-4">
-              <div className="font-bold text-xl">Orders</div>
-              {isValidating && (
-                <Loader
-                  color={nft ? colorForRarity(nft.attributes.rarity) : "white"}
-                  size="xs"
-                  variant="dots"
-                />
-              )}
+        <div className="flex gap-x-16">
+          {markets.map((market) => (
+            <div key={market.id} className="flex flex-col">
+              <MarketOrderBook
+                conversion={data ? data.rate : null}
+                market={market}
+                nft={nft}
+              />
+              <MarketDataFeed symbol={market.id} />
             </div>
-            <div className="flex flex-row gap-x-24 w-full">
-              <MarketSize title="Asks" data={data.asks} flipped />
-              <MarketSize title="Bids" data={data.bids} />
-            </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -158,16 +203,30 @@ const Detail = ({ market, cachedNft }) => {
 // this function only runs on the server by Next.js
 export const getServerSideProps = async ({ params }) => {
   const market = params.pid;
+  const nftData = await fetchNFTs();
+  console.log(`market`, market, params);
+  const nfts = nftData.filter((x) => {
+    return x.markets.filter((x) => x.id === market).length > 0;
+  });
+
+  if (nfts.length != 1) {
+    console.log(`nft not found`, market);
+    return { props: { nft: null } };
+  }
+
+  const nft = nfts[0];
+  const markets = nft.markets;
   // const marketData = await getMarketData({ market });
   // const marketDataPath = `/api/market/${market}`;
   const marketData = null;
-  const nft = nftForMarket(market);
+
   let fallback = {};
   // fallback[marketDataPath] = marketData;
   return {
     props: {
       market,
-      cachedNft: nft,
+      markets,
+      nft,
       fallback: fallback,
     },
   };

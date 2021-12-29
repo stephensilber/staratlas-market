@@ -34,10 +34,7 @@ export const nfts = [
     totalSupply: 4,
     mint: "DB76aiNQeLzHPwvFhzgwfpe6HGHCDTQ6snW6UD7AnHid",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1626570000,
-      saleTime: 1626559200,
-    },
+    tradeSettings: { expireTime: 1626570000, saleTime: 1626559200 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:47.312Z",
@@ -64,10 +61,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Ancient Dance",
@@ -83,21 +77,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a6e",
-        supply: 62,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194905369216ac8d8ad9",
-        supply: 2959,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b45a7ed5687431de73",
-        supply: 4,
-        id: 1630867899,
-      },
+      { _id: "61320fdf05369216ac8d8a6e", supply: 62, id: 1630670567 },
+      { _id: "6132194905369216ac8d8ad9", supply: 2959, id: 1630671111 },
+      { _id: "613512b45a7ed5687431de73", supply: 4, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -123,10 +105,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Peace Sign",
@@ -142,16 +121,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a86",
-        supply: 13,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8af9",
-        supply: 711,
-        id: 1630671111,
-      },
+      { _id: "61320fe005369216ac8d8a86", supply: 13, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8af9", supply: 711, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -177,10 +148,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Council Meta-PAS",
@@ -195,13 +163,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194d05369216ac8d8b5c",
-        supply: 4,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194d05369216ac8d8b5c", supply: 4, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -239,10 +201,7 @@ export const nfts = [
     totalSupply: 928,
     mint: "BgiTVxW9uLuHHoafTd2qjYB5xjCc5Y1EnUuYNfmTwhvp",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1621720800,
-      saleTime: 1621116000,
-    },
+    tradeSettings: { expireTime: 1621720800, saleTime: 1621116000 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:46.766Z",
@@ -271,10 +230,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Power Plant",
@@ -290,21 +246,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fde05369216ac8d8a53",
-        supply: 257,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194805369216ac8d8ab5",
-        supply: 23016,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de46",
-        supply: 18,
-        id: 1630867899,
-      },
+      { _id: "61320fde05369216ac8d8a53", supply: 257, id: 1630670567 },
+      { _id: "6132194805369216ac8d8ab5", supply: 23016, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de46", supply: 18, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -331,10 +275,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Claim Stake Tier 3",
@@ -350,22 +291,10 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a89",
-        supply: 39,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8afd",
-        supply: 2133,
-        id: 1630671111,
-      },
+      { _id: "61320fe005369216ac8d8a89", supply: 39, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8afd", supply: 2133, id: 1630671111 },
     ],
-    primarySales: [
-      {
-        listTimestamp: 1640967000,
-      },
-    ],
+    primarySales: [{ listTimestamp: 1640967000 }],
   },
   {
     _id: "612e7223fee257a97be35322",
@@ -388,10 +317,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Faction Passport",
@@ -407,21 +333,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a5c",
-        supply: 94,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194905369216ac8d8ac1",
-        supply: 12594,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de55",
-        supply: 10,
-        id: 1630867899,
-      },
+      { _id: "61320fdf05369216ac8d8a5c", supply: 94, id: 1630670567 },
+      { _id: "6132194905369216ac8d8ac1", supply: 12594, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de55", supply: 10, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -447,10 +361,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Pilot License",
@@ -466,21 +377,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a74",
-        supply: 62,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194905369216ac8d8ae1",
-        supply: 2959,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b45a7ed5687431de7d",
-        supply: 4,
-        id: 1630867899,
-      },
+      { _id: "61320fe005369216ac8d8a74", supply: 62, id: 1630670567 },
+      { _id: "6132194905369216ac8d8ae1", supply: 2959, id: 1630671111 },
+      { _id: "613512b45a7ed5687431de7d", supply: 4, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -507,10 +406,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "VZUS opod",
@@ -526,16 +422,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "6132194b05369216ac8d8b20",
-        supply: 72,
-        id: 1630671111,
-      },
-      {
-        _id: "613831d6b57acc003854d23a",
-        supply: 28,
-        id: 1631072550,
-      },
+      { _id: "6132194b05369216ac8d8b20", supply: 72, id: 1630671111 },
+      { _id: "613831d6b57acc003854d23a", supply: 28, id: 1631072550 },
     ],
     primarySales: [
       {
@@ -581,10 +469,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Claim Stake Tier 4",
@@ -600,17 +485,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "6132194c05369216ac8d8b2c",
-        supply: 1296,
-        id: 1630671111,
-      },
+      { _id: "6132194c05369216ac8d8b2c", supply: 1296, id: 1630671111 },
     ],
-    primarySales: [
-      {
-        listTimestamp: 1640968200,
-      },
-    ],
+    primarySales: [{ listTimestamp: 1640968200 }],
   },
   {
     _id: "612e7223fee257a97be3533b",
@@ -635,10 +512,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Fimbul BYOS Packlite",
@@ -653,13 +527,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194c05369216ac8d8b35",
-        supply: 5,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194c05369216ac8d8b35", supply: 5, id: 1630671111 }],
     primarySales: [
       {
         _id: "613aab6f790c6a6db8b089f8",
@@ -704,10 +572,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Calico Compakt Hero",
@@ -723,16 +588,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "6132194d05369216ac8d8b56",
-        supply: 4,
-        id: 1630671111,
-      },
-      {
-        _id: "613831d52763900038276da5",
-        supply: 29,
-        id: 1631072550,
-      },
+      { _id: "6132194d05369216ac8d8b56", supply: 4, id: 1630671111 },
+      { _id: "613831d52763900038276da5", supply: 29, id: 1631072550 },
     ],
     primarySales: [
       {
@@ -789,10 +646,7 @@ export const nfts = [
     totalSupply: 5,
     mint: "8EXX5kG7qWTjgpNSGX7PnB6hJZ8xhXUcCafVJaBEJo32",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1624791600,
-      saleTime: 1624744800,
-    },
+    tradeSettings: { expireTime: 1624791600, saleTime: 1624744800 },
     musician: "Sueco the Child x Audio Chateau",
     airdrops: [],
     primarySales: [],
@@ -821,10 +675,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Usturn",
@@ -839,13 +690,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194b05369216ac8d8b23",
-        supply: 72,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194b05369216ac8d8b23", supply: 72, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -870,10 +715,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "To Infinity",
@@ -888,13 +730,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194d05369216ac8d8b53",
-        supply: 4,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194d05369216ac8d8b53", supply: 4, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -919,10 +755,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Unique Badge",
@@ -938,16 +771,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe105369216ac8d8aa1",
-        supply: 17,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194b05369216ac8d8b1d",
-        supply: 1993,
-        id: 1630671111,
-      },
+      { _id: "61320fe105369216ac8d8aa1", supply: 17, id: 1630670567 },
+      { _id: "6132194b05369216ac8d8b1d", supply: 1993, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -986,10 +811,7 @@ export const nfts = [
     totalSupply: 10561,
     mint: "HAWy8kV3bD4gaN6yy6iK2619x2dyzLUBj1PfJiihTisE",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1619906400,
-      saleTime: 1619301600,
-    },
+    tradeSettings: { expireTime: 1619906400, saleTime: 1619301600 },
     updatedAt: "2021-09-03T07:08:46.571Z",
     airdrops: [],
     primarySales: [],
@@ -1029,10 +851,7 @@ export const nfts = [
     totalSupply: 72,
     mint: "6bD8mr8DyuVqN5dXd1jnqmCL66b5KUV14jYY1HSmnxTE",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1623664800,
-      saleTime: 1623535200,
-    },
+    tradeSettings: { expireTime: 1623664800, saleTime: 1623535200 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:47.003Z",
@@ -1061,10 +880,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Claim Stake Tier 1",
@@ -1080,27 +896,11 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fde05369216ac8d8a50",
-        supply: 94,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194805369216ac8d8ab1",
-        supply: 12594,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de41",
-        supply: 10,
-        id: 1630867899,
-      },
+      { _id: "61320fde05369216ac8d8a50", supply: 94, id: 1630670567 },
+      { _id: "6132194805369216ac8d8ab1", supply: 12594, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de41", supply: 10, id: 1630867899 },
     ],
-    primarySales: [
-      {
-        listTimestamp: 1640966400,
-      },
-    ],
+    primarySales: [{ listTimestamp: 1640966400 }],
   },
   {
     _id: "612e7223fee257a97be3533e",
@@ -1125,10 +925,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Ogrika Thripid",
@@ -1144,16 +941,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "6132194c05369216ac8d8b3e",
-        supply: 5,
-        id: 1630671111,
-      },
-      {
-        _id: "613831d531fab50038f0ae71",
-        supply: 24,
-        id: 1631072550,
-      },
+      { _id: "6132194c05369216ac8d8b3e", supply: 5, id: 1630671111 },
+      { _id: "613831d531fab50038f0ae71", supply: 24, id: 1631072550 },
     ],
     primarySales: [
       {
@@ -1211,10 +1000,7 @@ export const nfts = [
     totalSupply: 111,
     mint: "7dr7jVyXf1KUnYq5FTpV2vCZjKRR4MV94jzerb8Fi16Q",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1622757600,
-      saleTime: 1622325600,
-    },
+    tradeSettings: { expireTime: 1622757600, saleTime: 1622325600 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:46.882Z",
@@ -1242,10 +1028,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Mining Drill",
@@ -1261,21 +1044,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a56",
-        supply: 257,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194805369216ac8d8ab9",
-        supply: 23016,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de4b",
-        supply: 18,
-        id: 1630867899,
-      },
+      { _id: "61320fdf05369216ac8d8a56", supply: 257, id: 1630670567 },
+      { _id: "6132194805369216ac8d8ab9", supply: 23016, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de4b", supply: 18, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -1302,10 +1073,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Spacer",
@@ -1321,21 +1089,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a65",
-        supply: 62,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194905369216ac8d8acd",
-        supply: 2959,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de64",
-        supply: 4,
-        id: 1630867899,
-      },
+      { _id: "61320fdf05369216ac8d8a65", supply: 62, id: 1630670567 },
+      { _id: "6132194905369216ac8d8acd", supply: 2959, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de64", supply: 4, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -1362,10 +1118,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Opal Jetjet",
@@ -1381,21 +1134,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a7a",
-        supply: 13,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8ae9",
-        supply: 711,
-        id: 1630671111,
-      },
-      {
-        _id: "613ac2ffcd7bad003843f425",
-        supply: 81,
-        id: 1631240791,
-      },
+      { _id: "61320fe005369216ac8d8a7a", supply: 13, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8ae9", supply: 711, id: 1630671111 },
+      { _id: "613ac2ffcd7bad003843f425", supply: 81, id: 1631240791 },
     ],
     primarySales: [
       {
@@ -1440,10 +1181,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Officer's Badge",
@@ -1459,16 +1197,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a8f",
-        supply: 13,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8b05",
-        supply: 711,
-        id: 1630671111,
-      },
+      { _id: "61320fe005369216ac8d8a8f", supply: 13, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8b05", supply: 711, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -1495,10 +1225,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Black Sun",
@@ -1513,13 +1240,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194d05369216ac8d8b50",
-        supply: 4,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194d05369216ac8d8b50", supply: 4, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -1545,10 +1266,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Vintage Astronaut Suit",
@@ -1564,16 +1282,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe105369216ac8d8a9b",
-        supply: 17,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194b05369216ac8d8b15",
-        supply: 1993,
-        id: 1630671111,
-      },
+      { _id: "61320fe105369216ac8d8a9b", supply: 17, id: 1630670567 },
+      { _id: "6132194b05369216ac8d8b15", supply: 1993, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -1600,10 +1310,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Noble Cloak",
@@ -1619,16 +1326,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a83",
-        supply: 13,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8af5",
-        supply: 711,
-        id: 1630671111,
-      },
+      { _id: "61320fe005369216ac8d8a83", supply: 13, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8af5", supply: 711, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -1653,10 +1352,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Faction Meta-PAS",
@@ -1671,13 +1367,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194c05369216ac8d8b47",
-        supply: 5,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194c05369216ac8d8b47", supply: 5, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -1703,10 +1393,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Opal Jet",
@@ -1722,21 +1409,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe105369216ac8d8a92",
-        supply: 17,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8b09",
-        supply: 1993,
-        id: 1630671111,
-      },
-      {
-        _id: "613831d6b57acc003854d240",
-        supply: 82,
-        id: 1631072550,
-      },
+      { _id: "61320fe105369216ac8d8a92", supply: 17, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8b09", supply: 1993, id: 1630671111 },
+      { _id: "613831d6b57acc003854d240", supply: 82, id: 1631072550 },
     ],
     primarySales: [
       {
@@ -1794,10 +1469,7 @@ export const nfts = [
     totalSupply: 79,
     mint: "G1bE9ge8Yoq43hv7QLcumxTFhHqFMdcL4y2d6ZdzMG4b",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1623157200,
-      saleTime: 1622930400,
-    },
+    tradeSettings: { expireTime: 1623157200, saleTime: 1622930400 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:46.941Z",
@@ -1825,10 +1497,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Tigu",
@@ -1844,21 +1513,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a68",
-        supply: 62,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194905369216ac8d8ad1",
-        supply: 2959,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de69",
-        supply: 4,
-        id: 1630867899,
-      },
+      { _id: "61320fdf05369216ac8d8a68", supply: 62, id: 1630670567 },
+      { _id: "6132194905369216ac8d8ad1", supply: 2959, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de69", supply: 4, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -1884,10 +1541,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Principal's Badge",
@@ -1903,21 +1557,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a77",
-        supply: 62,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8ae5",
-        supply: 2959,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b45a7ed5687431de82",
-        supply: 4,
-        id: 1630867899,
-      },
+      { _id: "61320fe005369216ac8d8a77", supply: 62, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8ae5", supply: 2959, id: 1630671111 },
+      { _id: "613512b45a7ed5687431de82", supply: 4, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -1944,10 +1586,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Streamcatcher",
@@ -1962,13 +1601,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194c05369216ac8d8b41",
-        supply: 5,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194c05369216ac8d8b41", supply: 5, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -1994,10 +1627,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Raydium Defy",
@@ -2038,10 +1668,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Black Sun",
@@ -2056,13 +1683,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194d05369216ac8d8b59",
-        supply: 4,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194d05369216ac8d8b59", supply: 4, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -2087,10 +1708,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Squiddish",
@@ -2105,13 +1723,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194b05369216ac8d8b26",
-        supply: 72,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194b05369216ac8d8b26", supply: 72, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -2149,10 +1761,7 @@ export const nfts = [
     totalSupply: 5,
     mint: "Hfjgcs9ix17EwgXVVbKjo6NfMm2CXfr34cwty3xWARUm",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1624226400,
-      saleTime: 1624140000,
-    },
+    tradeSettings: { expireTime: 1624226400, saleTime: 1624140000 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:47.059Z",
@@ -2179,10 +1788,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Captain's License",
@@ -2197,13 +1803,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194c05369216ac8d8b2f",
-        supply: 72,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194c05369216ac8d8b2f", supply: 72, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -2228,10 +1828,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Atlas Badge",
@@ -2247,28 +1844,16 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a5f",
-        supply: 77,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194905369216ac8d8ac5",
-        supply: 10601,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de5a",
-        supply: 10,
-        id: 1630867899,
-      },
+      { _id: "61320fdf05369216ac8d8a5f", supply: 77, id: 1630670567 },
+      { _id: "6132194905369216ac8d8ac5", supply: 10601, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de5a", supply: 10, id: 1630867899 },
     ],
     primarySales: [],
   },
   {
     _id: "612e7223fee257a97be35324",
     description:
-      "Pearce's X5 Car is a shapeshifting, two seater, nimble fighter and starship. It has four different primary modes of operation. (1) Attack mode with all weapons pointing forward. (2) Speed mode with all thrusters pointing to the rear. (3) Normal mode with the weapons and thrusters split to the forward and read. (4) Defense mode with the arms retracted and hull plating with the largest coverage. \n\nThe X5 Car is the stock patrol vessel for the Council of Peace with a pervasive presence throughout secured faction territories in space and on land. Be sure to earn your pilot's license to take this through faction space.",
+      "Pearce's X5 Car is a shapeshifting, two seater, nimble fighter and starship. It has four different primary modes of operation. (1) Attack mode with all weapons pointing forward. (2) Speed mode with all thrusters pointing to the rear. (3) Normal mode with the weapons and thrusters split to the forward and rear. (4) Defense mode with the arms retracted and hull plating with the largest coverage. \n\nThe X5 Car is the stock patrol vessel for the Council of Peace with a pervasive presence throughout secured faction territories in space and on land. Be sure to earn your pilot's license to take this through faction space.",
     image: "https://storage.googleapis.com/nft-assets/items/PX5.jpg",
     attributes: {
       itemType: "ship",
@@ -2288,10 +1873,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Pearce X5",
@@ -2307,26 +1889,10 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a62",
-        supply: 62,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194905369216ac8d8ac9",
-        supply: 2959,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de5f",
-        supply: 4,
-        id: 1630867899,
-      },
-      {
-        _id: "613831d531fab50038f0ae6c",
-        supply: 95,
-        id: 1631072550,
-      },
+      { _id: "61320fdf05369216ac8d8a62", supply: 62, id: 1630670567 },
+      { _id: "6132194905369216ac8d8ac9", supply: 2959, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de5f", supply: 4, id: 1630867899 },
+      { _id: "613831d531fab50038f0ae6c", supply: 95, id: 1631072550 },
     ],
     primarySales: [
       {
@@ -2372,10 +1938,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Lone Star",
@@ -2390,13 +1953,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194c05369216ac8d8b38",
-        supply: 5,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194c05369216ac8d8b38", supply: 5, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -2421,10 +1978,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Executive Badge",
@@ -2439,13 +1993,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194d05369216ac8d8b5f",
-        supply: 4,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194d05369216ac8d8b5f", supply: 4, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -2471,10 +2019,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "White Hot",
@@ -2490,16 +2035,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe105369216ac8d8a95",
-        supply: 17,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194b05369216ac8d8b0d",
-        supply: 1993,
-        id: 1630671111,
-      },
+      { _id: "61320fe105369216ac8d8a95", supply: 17, id: 1630670567 },
+      { _id: "6132194b05369216ac8d8b0d", supply: 1993, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -2525,10 +2062,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Armstrong Patch",
@@ -2544,16 +2078,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe105369216ac8d8a98",
-        supply: 17,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194b05369216ac8d8b11",
-        supply: 1993,
-        id: 1630671111,
-      },
+      { _id: "61320fe105369216ac8d8a98", supply: 17, id: 1630670567 },
+      { _id: "6132194b05369216ac8d8b11", supply: 1993, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -2592,10 +2118,7 @@ export const nfts = [
     totalSupply: 707,
     mint: "4G85c5aUsRTrRPqE5VjY7ebD9b2ktTF6NEVGiCddRBDX",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1622152800,
-      saleTime: 1621720800,
-    },
+    tradeSettings: { expireTime: 1622152800, saleTime: 1621720800 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:46.824Z",
@@ -2623,10 +2146,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Nanobyte",
@@ -2642,21 +2162,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fde05369216ac8d8a4d",
-        supply: 77,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194805369216ac8d8aad",
-        supply: 10601,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b25a7ed5687431de3c",
-        supply: 10,
-        id: 1630867899,
-      },
+      { _id: "61320fde05369216ac8d8a4d", supply: 77, id: 1630670567 },
+      { _id: "6132194805369216ac8d8aad", supply: 10601, id: 1630671111 },
+      { _id: "613512b25a7ed5687431de3c", supply: 10, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -2683,10 +2191,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Noble Signer",
@@ -2702,16 +2207,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a80",
-        supply: 13,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8af1",
-        supply: 711,
-        id: 1630671111,
-      },
+      { _id: "61320fe005369216ac8d8a80", supply: 13, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8af1", supply: 711, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -2737,10 +2234,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Claim Stake Tier 5",
@@ -2756,17 +2250,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "6132194c05369216ac8d8b44",
-        supply: 1075,
-        id: 1630671111,
-      },
+      { _id: "6132194c05369216ac8d8b44", supply: 1075, id: 1630671111 },
     ],
-    primarySales: [
-      {
-        listTimestamp: 1640968800,
-      },
-    ],
+    primarySales: [{ listTimestamp: 1640968800 }],
   },
   {
     _id: "612e7223fee257a97be35342",
@@ -2790,10 +2276,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Captain's Badge",
@@ -2808,13 +2291,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194d05369216ac8d8b4a",
-        supply: 5,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194d05369216ac8d8b4a", supply: 5, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -2852,10 +2329,7 @@ export const nfts = [
     totalSupply: 6633,
     mint: "ATSPo9f9TJ3Atx8SuoTYdzSMh4ctQBzYzDiNukQDmoF7",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1620511200,
-      saleTime: 1619906400,
-    },
+    tradeSettings: { expireTime: 1620511200, saleTime: 1619906400 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:46.645Z",
@@ -2895,10 +2369,7 @@ export const nfts = [
     totalSupply: 3104,
     mint: "36s6AFRXzE9KVdUyoJQ5y6mwxXw21LawYqqwNiQUMD8s",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1621116000,
-      saleTime: 1620511200,
-    },
+    tradeSettings: { expireTime: 1621116000, saleTime: 1620511200 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:46.706Z",
@@ -2938,10 +2409,7 @@ export const nfts = [
     totalSupply: 4,
     mint: "FPnwwNiL1tXqd4ZbGjFYsCw5qsQw91VN79SNcU4Bc732",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1625972400,
-      saleTime: 1625954400,
-    },
+    tradeSettings: { expireTime: 1625972400, saleTime: 1625954400 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:47.249Z",
@@ -2981,10 +2449,7 @@ export const nfts = [
     totalSupply: 2006,
     mint: "9vi6PTKBFHR2hXgyjoTZx6h7WXNkFAA5dCsZRSi4higK",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1626840000,
-      saleTime: 1623762000,
-    },
+    tradeSettings: { expireTime: 1626840000, saleTime: 1623762000 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:47.432Z",
@@ -3013,10 +2478,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Pearce X4",
@@ -3052,26 +2514,10 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fde05369216ac8d8a4a",
-        supply: 77,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194805369216ac8d8aa9",
-        supply: 10601,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b25a7ed5687431de37",
-        supply: 10,
-        id: 1630867899,
-      },
-      {
-        _id: "613ac2ff84ba190038b47741",
-        supply: 840,
-        id: 1631240791,
-      },
+      { _id: "61320fde05369216ac8d8a4a", supply: 77, id: 1630670567 },
+      { _id: "6132194805369216ac8d8aa9", supply: 10601, id: 1630671111 },
+      { _id: "613512b25a7ed5687431de37", supply: 10, id: 1630867899 },
+      { _id: "613ac2ff84ba190038b47741", supply: 840, id: 1631240791 },
     ],
   },
   {
@@ -3097,10 +2543,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Space Station",
@@ -3116,21 +2559,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a59",
-        supply: 257,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194805369216ac8d8abd",
-        supply: 21577,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de50",
-        supply: 18,
-        id: 1630867899,
-      },
+      { _id: "61320fdf05369216ac8d8a59", supply: 257, id: 1630670567 },
+      { _id: "6132194805369216ac8d8abd", supply: 21577, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de50", supply: 18, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -3157,10 +2588,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Sphinx",
@@ -3176,21 +2604,9 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a6b",
-        supply: 62,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194905369216ac8d8ad5",
-        supply: 2959,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b35a7ed5687431de6e",
-        supply: 4,
-        id: 1630867899,
-      },
+      { _id: "61320fdf05369216ac8d8a6b", supply: 62, id: 1630670567 },
+      { _id: "6132194905369216ac8d8ad5", supply: 2959, id: 1630671111 },
+      { _id: "613512b35a7ed5687431de6e", supply: 4, id: 1630867899 },
     ],
     primarySales: [],
   },
@@ -3217,10 +2633,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Claim Stake Tier 2",
@@ -3236,27 +2649,11 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fdf05369216ac8d8a71",
-        supply: 124,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194905369216ac8d8add",
-        supply: 5918,
-        id: 1630671111,
-      },
-      {
-        _id: "613512b45a7ed5687431de78",
-        supply: 8,
-        id: 1630867899,
-      },
+      { _id: "61320fdf05369216ac8d8a71", supply: 124, id: 1630670567 },
+      { _id: "6132194905369216ac8d8add", supply: 5918, id: 1630671111 },
+      { _id: "613512b45a7ed5687431de78", supply: 8, id: 1630867899 },
     ],
-    primarySales: [
-      {
-        listTimestamp: 1640967000,
-      },
-    ],
+    primarySales: [{ listTimestamp: 1640967000 }],
   },
   {
     _id: "612e7223fee257a97be3532d",
@@ -3281,10 +2678,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "B.O.B.",
@@ -3300,16 +2694,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a7d",
-        supply: 13,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8aed",
-        supply: 711,
-        id: 1630671111,
-      },
+      { _id: "61320fe005369216ac8d8a7d", supply: 13, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8aed", supply: 711, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -3335,10 +2721,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Rolling Coal",
@@ -3353,13 +2736,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194c05369216ac8d8b3b",
-        supply: 5,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194c05369216ac8d8b3b", supply: 5, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -3385,10 +2762,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Calico Guardian",
@@ -3404,16 +2778,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "6132194d05369216ac8d8b4d",
-        supply: 4,
-        id: 1630671111,
-      },
-      {
-        _id: "613ac3006db7240038739ac0",
-        supply: 11,
-        id: 1631240791,
-      },
+      { _id: "6132194d05369216ac8d8b4d", supply: 4, id: 1630671111 },
+      { _id: "613ac3006db7240038739ac0", supply: 11, id: 1631240791 },
     ],
     primarySales: [
       {
@@ -3468,10 +2834,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Vintage Orbiting Satellite",
@@ -3487,16 +2850,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe105369216ac8d8a9e",
-        supply: 17,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194b05369216ac8d8b19",
-        supply: 1993,
-        id: 1630671111,
-      },
+      { _id: "61320fe105369216ac8d8a9e", supply: 17, id: 1630670567 },
+      { _id: "6132194b05369216ac8d8b19", supply: 1993, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -3535,10 +2890,7 @@ export const nfts = [
     totalSupply: 4,
     mint: "CAjoJeGCCRae9oDwHYXzkeUDonp3dZLWV5GKHysLwjnx",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1625382000,
-      saleTime: 1625349600,
-    },
+    tradeSettings: { expireTime: 1625382000, saleTime: 1625349600 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:47.181Z",
@@ -3578,10 +2930,7 @@ export const nfts = [
     totalSupply: 4,
     mint: "BrzwWsG845VttbTsacZMLKhyc2jAZU12MaPkTYrJHoqm",
     network: "mainnet-beta",
-    tradeSettings: {
-      expireTime: 1627164001,
-      saleTime: 1627164000,
-    },
+    tradeSettings: { expireTime: 1627164001, saleTime: 1627164000 },
     airdrops: [],
     primarySales: [],
     updatedAt: "2021-09-03T07:08:47.372Z",
@@ -3608,10 +2957,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "VIP",
@@ -3627,16 +2973,8 @@ export const nfts = [
       },
     ],
     airdrops: [
-      {
-        _id: "61320fe005369216ac8d8a8c",
-        supply: 13,
-        id: 1630670567,
-      },
-      {
-        _id: "6132194a05369216ac8d8b01",
-        supply: 711,
-        id: 1630671111,
-      },
+      { _id: "61320fe005369216ac8d8a8c", supply: 13, id: 1630670567 },
+      { _id: "6132194a05369216ac8d8b01", supply: 711, id: 1630671111 },
     ],
     primarySales: [],
   },
@@ -3663,10 +3001,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Replicatur Shawl",
@@ -3681,13 +3016,7 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
-      {
-        _id: "6132194b05369216ac8d8b29",
-        supply: 72,
-        id: 1630671111,
-      },
-    ],
+    airdrops: [{ _id: "6132194b05369216ac8d8b29", supply: 72, id: 1630671111 }],
     primarySales: [],
   },
   {
@@ -3712,10 +3041,7 @@ export const nfts = [
     },
     tradeSettings: {
       saleTime: 1630454400,
-      msrp: {
-        value: 0,
-        currencySymbol: "USDC",
-      },
+      msrp: { value: 0, currencySymbol: "USDC" },
     },
     deactivated: false,
     name: "Superior's Badge",
@@ -3730,14 +3056,609 @@ export const nfts = [
         serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
       },
     ],
-    airdrops: [
+    airdrops: [{ _id: "6132194c05369216ac8d8b32", supply: 72, id: 1630671111 }],
+    primarySales: [],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18f4",
+    description:
+      "Bomber Jacket (Galactic Love Outfitters)\n- Straps included. Tags not included.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/primordial-glo.gif",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "legendary",
+    },
+    symbol: "FM-PLG",
+    media: {
+      qrInstagram: "",
+      qrFacebook: "",
+      sketchfab: "",
+      audio: "",
+      thumbnailUrl:
+        "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/primordial-glo-thumb.png",
+    },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 420, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "PRIMORDIAL GLO",
+    updatedAt: "2021-09-16T23:33:14.488Z",
+    primarySales: [
       {
-        _id: "6132194c05369216ac8d8b32",
-        supply: 72,
-        id: 1630671111,
+        supply: 8888,
+        isMinted: true,
+        mintTimestamp: null,
+        isListed: false,
+        listTimestamp: 1631840400,
+        orderId: null,
       },
     ],
-    primarySales: [],
+    airdrops: [],
+    mint: "7YNMhgmG7ZEQDvKVwsvN2GyUPaDpKYQ3VtzdkEskcAAe",
+    markets: [
+      {
+        id: "6GgPHefcbFu78kE9GZg3z1A9eHAaXeCPMqdjhRscFDSL",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18f5",
+    description:
+      "eL.eM.eN.tAL Jersey [CO92E]\n- Straps included. Tags not included.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/cosmic-origin.gif",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "epic",
+    },
+    symbol: "FM-CO92",
+    media: {
+      qrInstagram: "",
+      qrFacebook: "",
+      sketchfab: "",
+      audio: "",
+      thumbnailUrl:
+        "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/cosmic-origin-thumb.png",
+    },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 196, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "COSMIC ORIGIN 92",
+    updatedAt: "2021-09-16T23:45:14.465Z",
+    primarySales: [
+      {
+        supply: 11111,
+        isMinted: true,
+        mintTimestamp: 1631835914,
+        isListed: false,
+        listTimestamp: 1631840700,
+        orderId: null,
+      },
+    ],
+    airdrops: [],
+    mint: "DTtuny8L9q4DaDbLrCcE3Na68y1Y5oqrQCF8DX1RB8fr",
+    markets: [
+      {
+        id: "3AuyQppPMFToedMm8Xf1x79CfDUzpzLDorHHQmf11Rzy",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18f6",
+    description: "Primal Origin Neckwear\n- Straps and tags not included.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/photonix-provenance.gif",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "epic",
+    },
+    symbol: "FM-PP",
+    media: {
+      qrInstagram: "",
+      qrFacebook: "",
+      sketchfab: "",
+      audio: "",
+      thumbnailUrl:
+        "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/photonix-provenance-thumb.png",
+    },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 140.7, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "PhotoniX Provenance",
+    updatedAt: "2021-09-16T23:46:09.680Z",
+    primarySales: [
+      {
+        supply: 11111,
+        isMinted: true,
+        mintTimestamp: 1631835969,
+        isListed: false,
+        listTimestamp: 1631841000,
+        orderId: null,
+      },
+    ],
+    airdrops: [],
+    mint: "77GQVKfHFRJJuMXsWSHsM8acMZvouZ352EEMfRdoKRZP",
+    markets: [
+      {
+        id: "Fjcdi6CJJqvy2aSknEodKheB1dYVD9rdtZMJNjFo8Fck",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18f7",
+    description:
+      "Glow-up  (New Exoplanetary Textiles Co.)\n- Straps and Hat included. Tags not included.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/next-level-ds-bodysuit.gif",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "epic",
+    },
+    symbol: "FM-NLDB",
+    media: {
+      qrInstagram: "",
+      qrFacebook: "",
+      sketchfab: "",
+      audio: "",
+      thumbnailUrl:
+        "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/next-level-ds-bodysuit-thumb.png",
+    },
+    tradeSettings: {
+      saleTime: 1631822159,
+      msrp: { value: 274.89, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "NXT le]V[el DS Bodysuit ",
+    updatedAt: "2021-09-16T23:47:03.425Z",
+    primarySales: [
+      {
+        supply: 11111,
+        isMinted: true,
+        mintTimestamp: 1631836023,
+        isListed: false,
+        listTimestamp: 1631841300,
+        orderId: null,
+      },
+    ],
+    airdrops: [],
+    mint: "DyNBYAyH6YPEKMCeh6GSNZR9KowmQEcXjvnv1ktfLRKX",
+    markets: [
+      {
+        id: "ChJKLWcHQb4VXFmA9Q9gjLvRapkboUvWCfCfqmLsnhSw",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18f8",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/animoca-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3A",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K Animoca",
+    updatedAt: "2021-09-16T23:48:03.132Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: 1631836083,
+        isListed: false,
+        listTimestamp: 1631841600,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "2YFmgNYGKLGTofn24mG2gPbGoKAfcH5SsfvNwXo1Hcsq",
+    markets: [
+      {
+        id: "3A1Y5StwbaT6jWo5dgBMNaZMDoQ1rfpxQyZ87Nmwjohx",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18f9",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/cryptokickers-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3CK",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K CryptoKickers",
+    updatedAt: "2021-09-16T23:48:53.714Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: 1631836133,
+        isListed: false,
+        listTimestamp: 1631841900,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "2Rw4Eqri7N4n3ZDsUVGfr8nhdxf4Uqjbim9tyJZb7Axd",
+    markets: [
+      {
+        id: "BayVbJdbJawJHvjBdTmHaX8P5EDnmLHVUAN5ZcDzZoJL",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18fa",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/fabricant-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3FAB",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K THE_FAB_RIC_ANT ",
+    updatedAt: "2021-09-16T23:51:01.383Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: 1631836261,
+        isListed: false,
+        listTimestamp: 1631842200,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "6pUxjPghGz5Gn9XnJuPaJCSpk9mhvzecvHb6G4rrSCJq",
+    markets: [
+      {
+        id: "AP2u8YPZtwanBUnP2SJ7mqXGwqZPQx4yLWdex7CtYToW",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18fb",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/ftx-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3FTX",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631818900,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K FTX",
+    updatedAt: "2021-09-16T23:51:59.478Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: 1631836319,
+        isListed: false,
+        listTimestamp: 1631842500,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "43shunGxqAydDfcHadZzs9j9JHVCEYixPnSMFHpqwc3k",
+    markets: [
+      {
+        id: "8vA9cAVBrt29WaCZY3jQ99cHMF9JqnX7F8dqC25CWr5n",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18fc",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/phantom-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3PH",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K Phantom",
+    updatedAt: "2021-09-16T23:52:50.852Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: 1631836370,
+        isListed: false,
+        listTimestamp: 1631842800,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "53ToK5o8cSZCNTjydjxDZYF3P2KbTzzUmmWPSD52PpY5",
+    markets: [
+      {
+        id: "D6jGFKePetKogT778PDtAqsEf75rvqH2nk5MpR3JsCNn",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18fd",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/serum-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3SR",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K SERUM ",
+    updatedAt: "2021-09-16T23:58:38.935Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: 1631836718,
+        isListed: false,
+        listTimestamp: 1631843100,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "2F62gz2zmNaRM1eQToQfJfhHCKG1t6c18fC1pZ9iB52J",
+    markets: [
+      {
+        id: "5XoGYWfC8ULXkU51ozSzfS1rX24fq2MtzhJh3RuyZzNL",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18fe",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/solana-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3SOL",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K SOLANA ",
+    updatedAt: "2021-09-16T23:53:48.171Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: 1631836428,
+        isListed: false,
+        listTimestamp: 1631843400,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "2Pm57eFBfKbMCKCDVuEscNsJM9x5r9X7Q8t1q9NiUgMV",
+    markets: [
+      {
+        id: "uWsNjBpSUYzF5pG2UvwTrMFwGnRecH7zBa9cuBMyfkX",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc18ff",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/star-atlas-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3A",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K ATLAS",
+    updatedAt: "2021-09-16T23:59:30.122Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: 1631836770,
+        isListed: false,
+        listTimestamp: 1631843700,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "56M4yyHAwz3Ro8SezkrQ3ph2ayR8sScSy7mqjHQwMS87",
+    markets: [
+      {
+        id: "Htg1p5W2yY91nM7hHk7GKTb1rAP2uZgGBxYfCWQJPfpv",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc1900",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/step-finance-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3STEP",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K STEP.finance",
+    updatedAt: "2021-09-17T00:01:14.727Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: 1631836874,
+        isListed: false,
+        listTimestamp: 1631844000,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "Cmvj2iW9WQZUaNJiruhjgnCRATRi2AwTK9KaVxMZtdDs",
+    markets: [
+      {
+        id: "BK5oTjFnW64Wk2fJdFbQ8e2dmB2rMUBFmAozp8FdhMwp",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
+  },
+  {
+    _id: "6143e0ac92761eeee4bc1901",
+    description: "Tribal Transcendence Tag. Slightly increases crew loyalty.",
+    image:
+      "https://storage.googleapis.com/nft-assets/FIRMAM3NTAL/raydium-patch.png",
+    attributes: {
+      itemType: "collectible",
+      category: "equipment",
+      class: "crew gear",
+      rarity: "rare",
+    },
+    symbol: "FM-T3RAY",
+    media: { qrInstagram: "", qrFacebook: "", sketchfab: "", audio: "" },
+    tradeSettings: {
+      saleTime: 1631811400,
+      msrp: { value: 6.73, currencySymbol: "USDC" },
+    },
+    deactivated: false,
+    name: "TTT 300K Raydium",
+    updatedAt: "2021-09-16T23:34:12.255Z",
+    primarySales: [
+      {
+        supply: 100000000,
+        isMinted: true,
+        mintTimestamp: null,
+        isListed: false,
+        listTimestamp: 1631844300,
+        orderId: null,
+        expireTimestamp: 1632700800,
+      },
+    ],
+    airdrops: [],
+    mint: "3Sg2QjXxJMpgiaf2VWU5dDWfWt1NVETtxVrZ26NuFpx9",
+    markets: [
+      {
+        id: "59M3seisE9pmfw2H2iiNyMNtHc2fP2PBdh659sG8Yctw",
+        quotePair: "USDC",
+        serumProgramId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin",
+      },
+    ],
   },
 ];
 
@@ -3772,22 +3693,21 @@ export function colorForRarity(rarity) {
 export function sortOrderForRarity(rarity) {
   switch (rarity) {
     case "anomaly":
-      return 6
+      return 6;
     case "legenary":
-      return 5
+      return 5;
     case "epic":
-      return 4
+      return 4;
     case "rare":
-      return 3
+      return 3;
     case "uncommon":
-      return 2
+      return 2;
     case "common":
-      return 1
+      return 1;
     default:
-      return 0
+      return 0;
   }
 }
-
 
 export function colorForItemType(itemType) {
   switch (itemType) {
@@ -3804,25 +3724,21 @@ export function colorForItemType(itemType) {
   }
 }
 
-
-
-
-
 export function colorGradientForRarity(rarity) {
   switch (rarity) {
     case "anomly":
-      return { from: "red", to: "pink", deg: 45}
+      return { from: "red", to: "pink", deg: 45 };
     case "legendary":
-      return { from: "yellow", to: "orange", deg: 45}
+      return { from: "yellow", to: "orange", deg: 45 };
     case "epic":
-      return { from: "indigo", to: "violet", deg: 45}
+      return { from: "indigo", to: "violet", deg: 45 };
     case "rare":
-      return { from: "blue", to: "cyan", deg: 45}
+      return { from: "blue", to: "cyan", deg: 45 };
     case "uncommon":
-      return { from: "green", to: "lime", deg: 45}
+      return { from: "green", to: "lime", deg: 45 };
     case "common":
-      return { from: "white", to: "gray", deg: 45}
+      return { from: "white", to: "gray", deg: 45 };
     default:
-      return { from: "white", to: "gray", deg: 45}
+      return { from: "white", to: "gray", deg: 45 };
   }
 }

@@ -6,20 +6,14 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useHotkeys } from "@mantine/hooks";
 import {
-  nfts,
   colorForItemType,
   colorGradientForRarity,
   sortOrderForRarity,
 } from "../nfts";
 import { MultiSelect } from "@mantine/core";
+import { fetchNFTs } from "./api/nfts";
 
-const itemTypes = Array.from(
-  new Set(nfts.map((x) => x.attributes.itemType.toString()))
-);
-const itemClasses = Array.from(new Set(nfts.map((x) => x.attributes.class)));
-const itemRarity = Array.from(new Set(nfts.map((x) => x.attributes.rarity)));
-
-export default function Home() {
+export default function Home({ itemTypes, itemRarity, itemClasses, nfts }) {
   const [selectedItemTypes, setSelectedItemTypes] = React.useState([]);
   const [selectedItemClasses, setSelectedItemClasses] = React.useState([]);
   const [selectedItemRarity, setSelectedItemRarity] = React.useState([]);
@@ -192,4 +186,26 @@ export default function Home() {
       <footer className={styles.footer}></footer>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const nftData = await fetchNFTs();
+  const itemTypes = Array.from(
+    new Set(nftData.map((x) => x.attributes.itemType.toString()))
+  );
+  const itemClasses = Array.from(
+    new Set(nftData.map((x) => x.attributes.class))
+  );
+  const itemRarity = Array.from(
+    new Set(nftData.map((x) => x.attributes.rarity))
+  );
+
+  return {
+    props: {
+      itemTypes,
+      itemClasses,
+      itemRarity,
+      nfts: nftData,
+    }, // will be passed to the page component as props
+  };
 }

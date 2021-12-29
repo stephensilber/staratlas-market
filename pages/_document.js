@@ -33,7 +33,7 @@ export default class _Document extends Document {
     return (
       <Html>
         <Head>
-          <link rel="icon" href="link to favicon" />
+          {/* <link rel="icon" href="link to favicon" /> */}
         </Head>
         <body>
           <Main />
