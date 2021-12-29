@@ -57,20 +57,10 @@ function MarketOrderBook({ market, nft, conversion }) {
   return (
     <div className="flex flex-col gap-y-3 w-full">
       <div className="flex flex-row justify-start items-center gap-x-4">
-        <div className="pt-4 pb-2 ">
-          <div className="font-bold text-xl">
-            Orders{" "}
-            <span className="font-light text-md">({market.quotePair})</span>
-          </div>
+        <div className="font-bold text-xl">
+          Orders{" "}
+          <span className="font-light text-md">({market.quotePair})</span>
         </div>
-
-        <Link href={`https://play.staratlas.com/market/${market.id}`}>
-          <span className="font-medium text-sm text-blue-400 cursor-pointer">Official</span>
-        </Link>
-        <Link href={`https://staratlas.exchange/#/market/${market.id}`}>
-          <span className="font-medium text-sm text-blue-400 cursor-pointer">Exchange</span>
-        </Link>
-
         {isValidating && (
           <Loader
             color={nft ? colorForRarity(nft.attributes.rarity) : "white"}
@@ -98,7 +88,7 @@ function MarketOrderBook({ market, nft, conversion }) {
   );
 }
 
-const Detail = ({ market, markets, nft }) => {
+const Feed = ({ markets, nft }) => {
   const homeRef = useRef(null);
 
   const { data } = useSWR(`/api/price`, fetcher, {
@@ -139,66 +129,10 @@ const Detail = ({ market, markets, nft }) => {
         </div>
       </div>
       <div className="flex flex-col gap-y-8 sm:flex-row sm:gap-x-8">
-        <div className="flex flex-col max-w-lg">
-          <div className="overflow-hidden">
-            <img
-              key={nft.image}
-              className="w-full rounded"
-              src={nft.image}
-              alt={nft.name}
-            />
-            <div className="py-4">
-              <Text
-                component="span"
-                align="center"
-                variant="gradient"
-                gradient={colorGradientForRarity(nft.attributes.rarity)}
-                size="lg"
-                weight={700}
-                style={{ fontFamily: "Dosis, sans-serif" }}
-              >
-                {nft.name}
-              </Text>
-              <p className="text-gray-300 text-base font-mono font-bold my-2">
-                {nft.symbol}
-              </p>
-              <p className="text-gray-300 text-base">{nft.description}</p>
-            </div>
-            <div className="pt-4 pb-2 flex flex-row gap-x-2">
-              <Badge
-                variant="filled"
-                color={colorForRarity(nft.attributes.rarity)}
-              >
-                {nft.attributes.rarity.toUpperCase()}
-              </Badge>
-              <Badge
-                variant="filled"
-                color={colorForItemType(nft.attributes.itemType)}
-              >
-                {nft.attributes.itemType.toUpperCase()}
-              </Badge>
-              <Badge variant="filled" color={"gray"}>
-                Supply: {nft.totalSupply}
-              </Badge>
-              {nft.attributes.tier && (
-                <Badge variant="filled" color={"gray"}>
-                  Tier: {nft.attributes.tier}
-                </Badge>
-              )}
-            </div>
-          </div>
-        </div>
         <div className="flex gap-x-16">
-          {markets.map((market) => (
-            <div key={market.id} className="flex flex-col">
-              <MarketOrderBook
-                conversion={data ? data.rate : null}
-                market={market}
-                nft={nft}
-              />
-              <MarketDataFeed symbols={[market.id]} />
-            </div>
-          ))}
+          <div className="flex flex-col">
+            <MarketDataFeed symbols={markets.map((x) => x.id)} />
+          </div>
         </div>
       </div>
     </div>
@@ -207,29 +141,21 @@ const Detail = ({ market, markets, nft }) => {
 
 // this function only runs on the server by Next.js
 export const getServerSideProps = async ({ params }) => {
-  const market = params.pid;
-  const nftData = await fetchNFTs();
-  console.log(`market`, market, params);
-  const nfts = nftData.filter((x) => {
-    return x.markets.filter((x) => x.id === market).length > 0;
-  });
-
-  if (nfts.length != 1) {
-    console.log(`nft not found`, market);
-    return { props: { nft: null } };
-  }
+  const nfts = await fetchNFTs();
 
   const nft = nfts[0];
-  const markets = nft.markets;
-  // const marketData = await getMarketData({ market });
-  // const marketDataPath = `/api/market/${market}`;
-  const marketData = null;
+  const _markets = nfts
+    .filter((x) => x.attributes.itemType == "ship")
+    .map((x) => x.markets);
+
+  let markets = [];
+  _markets.forEach((x) => {
+    markets.push(...x);
+  });
 
   let fallback = {};
-  // fallback[marketDataPath] = marketData;
   return {
     props: {
-      market,
       markets,
       nft,
       fallback: fallback,
@@ -237,4 +163,4 @@ export const getServerSideProps = async ({ params }) => {
   };
 };
 
-export default Detail;
+export default Feed;

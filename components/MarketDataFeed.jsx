@@ -14,11 +14,13 @@ import {
 import { marketName } from "../markets";
 import Moment from "react-moment";
 
-const MarketDataFeed = ({ symbol }) => {
+const MarketDataFeed = ({ symbols }) => {
   //Public API that will echo messages sent to it back to the client
   const [socketUrl, setSocketUrl] = useState(
     "wss://serum-vial.staratlas.cloud/v1/ws"
   );
+
+  console.log(`symbols`, symbols)
   const messageHistory = useRef([]);
 
   const { sendMessage, lastMessage, readyState, getWebSocket } = useWebSocket(
@@ -28,13 +30,13 @@ const MarketDataFeed = ({ symbol }) => {
         const subscribeL2 = {
           op: "subscribe",
           channel: "level2",
-          markets: [symbol],
+          markets: symbols,
         };
 
         const subscribeL3 = {
           op: "subscribe",
           channel: "level3",
-          markets: [symbol],
+          markets: symbols,
         };
 
         sendMessage(JSON.stringify(subscribeL2));
@@ -80,6 +82,7 @@ const MarketDataFeed = ({ symbol }) => {
             if (!message || !message.data) return false;
             const data = JSON.parse(message.data);
             if (data.type === "subscribed") return false;
+            // return true;
             return data.type === "l2snapshot";
             // return data.type !== "l2snapshot" && data.type !== "l2update";
           })
@@ -109,8 +112,8 @@ function MarketSize({ title, data }) {
 }
 
 function MessageCard({ message, startsMinimized }) {
-  const [opened, setOpen] = useState(false);
-  const [minimized, setMinimized] = useState(startsMinimized);
+  const [opened, setOpen] = useState(true);
+  const [minimized, setMinimized] = useState(false);
 
   const theme = useMantineTheme();
 
@@ -162,11 +165,11 @@ function MessageCard({ message, startsMinimized }) {
         </div>
       )}
 
-      {/* <Collapse in={minimized}>
+      <Collapse in={minimized}>
         <Collapse in={opened}>
           <Code>{JSON.stringify(data, null, 2)}</Code>
         </Collapse>
-      </Collapse> */}
+      </Collapse>
     </Card>
   );
 }

@@ -14,7 +14,7 @@ import { MultiSelect } from "@mantine/core";
 import { fetchNFTs } from "./api/nfts";
 
 export default function Home({ itemTypes, itemRarity, itemClasses, nfts }) {
-  const [selectedItemTypes, setSelectedItemTypes] = React.useState([]);
+  const [selectedItemTypes, setSelectedItemTypes] = React.useState(["ship"]);
   const [selectedItemClasses, setSelectedItemClasses] = React.useState([]);
   const [selectedItemRarity, setSelectedItemRarity] = React.useState([]);
 
