@@ -65,10 +65,14 @@ function MarketOrderBook({ market, nft, conversion }) {
         </div>
 
         <Link href={`https://play.staratlas.com/market/${market.id}`}>
-          <span className="font-medium text-sm text-blue-400 cursor-pointer">Official</span>
+          <span className="font-medium text-sm text-blue-400 cursor-pointer">
+            Official
+          </span>
         </Link>
         <Link href={`https://staratlas.exchange/#/market/${market.id}`}>
-          <span className="font-medium text-sm text-blue-400 cursor-pointer">Exchange</span>
+          <span className="font-medium text-sm text-blue-400 cursor-pointer">
+            Exchange
+          </span>
         </Link>
 
         {isValidating && (
@@ -100,13 +104,17 @@ function MarketOrderBook({ market, nft, conversion }) {
 
 const Detail = ({ market, markets, nft }) => {
   const homeRef = useRef(null);
+  const shipsRef = useRef(null);
 
   const { data } = useSWR(`/api/price`, fetcher, {
     refreshInterval: 10000,
     initialData: {},
   });
 
-  useHotkeys([["shift+H", () => homeRef.current.click()]]);
+  useHotkeys([
+    ["shift+H", () => homeRef.current.click()],
+    ["shift+N", () => shipsRef.current.click()],
+  ]);
 
   if (!nft) {
     return null;
@@ -114,30 +122,55 @@ const Detail = ({ market, markets, nft }) => {
 
   return (
     <div className="flex flex-col gap-y-4 p-8">
-      <div className="flex flex-row gap-x-3">
-        <Link href="/">
-          <a ref={homeRef}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
-            </svg>
-          </a>
-        </Link>
-        <div className="flex flex-row">
-          <Kbd>shift</Kbd>
-          <Kbd>H</Kbd>
+      <div className="flex flex-col gap-y-3">
+        <div className="flex flex-row gap-x-3">
+          <Link href="/">
+            <a ref={homeRef}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+            </a>
+          </Link>
+          <div className="flex flex-row">
+            <Kbd>shift</Kbd>
+            <Kbd>H</Kbd>
+          </div>
+        </div>
+        <div className="flex flex-row gap-x-3">
+          <Link href="/nfts">
+            <a ref={shipsRef}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </a>
+          </Link>
+          <div className="flex flex-row">
+            <Kbd>shift</Kbd>
+            <Kbd>S</Kbd>
+          </div>
         </div>
       </div>
+
       <div className="flex flex-col gap-y-8 sm:flex-row sm:gap-x-8">
         <div className="flex flex-col max-w-lg">
           <div className="overflow-hidden">
@@ -196,7 +229,7 @@ const Detail = ({ market, markets, nft }) => {
                 market={market}
                 nft={nft}
               />
-              <MarketDataFeed symbols={[market.id]} />
+              {/* <MarketDataFeed symbols={[market.id]} /> */}
             </div>
           ))}
         </div>
@@ -220,7 +253,7 @@ export const getServerSideProps = async ({ params }) => {
   }
 
   const nft = nfts[0];
-  const markets = nft.markets;
+  const markets = nft.markets.reverse();
   // const marketData = await getMarketData({ market });
   // const marketDataPath = `/api/market/${market}`;
   const marketData = null;

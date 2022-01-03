@@ -1,4 +1,8 @@
-module.exports = {
+/* eslint-disable @typescript-eslint/no-var-requires */
+const withTM = require('next-transpile-modules')(['@blocto/sdk', '@project-serum/sol-wallet-adapter']);
+
+
+module.exports = withTM({
   reactStrictMode: false,
   images: {
     domains: ["storage.googleapis.com"],
@@ -8,5 +12,5 @@ module.exports = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  webpack5: false,
-};
+  webpack5: true,
+})
