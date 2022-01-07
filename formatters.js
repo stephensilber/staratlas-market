@@ -39,14 +39,14 @@ export function formatRelativePercentage(value) {
 }
 
 export function formatCurrency(value) {
-  if (value == "") {
+  if (value == "" || value == null) {
     return value;
   }
   return numeral(value).format("$0,0.00");
 }
 
 export function formatCurrencyLarge(value) {
-  if (value == "") {
+  if (value == "" || value == null) {
     return value;
   }
   return numeral(value).format("($0,0.00 a)");

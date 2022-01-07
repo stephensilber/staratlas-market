@@ -81,11 +81,15 @@ export default function Sheet({
       throw new Error("Column not found");
     }
 
+    console.log(`getData: `, ship.name, column.prop)
+
+    const displayData = column.render
+    ? column.render(ship[column.prop]) || ""
+    : `${ship[column.prop] || ""}` || ""
+
     return {
-      kind: column.kind || GridCellKind.Text,
-      displayData: column.render
-        ? column.render(ship[column.prop])
-        : `${ship[column.prop] || ""}`,
+      kind: column.kind || GridCellKind.Markdown,
+      displayData: displayData,
       data: ship[column.prop],
       allowOverlay: false,
       lastUpdated: ship.lastUpdated,

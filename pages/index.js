@@ -8,6 +8,8 @@ import {
   formatCurrencyLarge,
   formatCurrency,
   formatPercentage,
+  formatNumber,
+  formatNumberLarge,
 } from "../formatters";
 
 import dynamic from "next/dynamic";
@@ -27,11 +29,13 @@ const columns = [
     prop: "name",
     title: "Name",
     width: 200,
+    kind: "text",
   },
   {
     prop: "shipsInEscrow",
-    title: "# Deployed",
-    width: 100,
+    title: "Deployed",
+    width: 67,
+    kind: "text",
   },
   {
     prop: "apr",
@@ -45,7 +49,15 @@ const columns = [
     title: "MSRP",
     width: 80,
     kind: "number",
+    // render: formatNumberLarge
     //   render: (value) => "$" + value.toFixed(2),
+  },
+  {
+    prop: "percentAboveMSRP",
+    title: "% >MSRP",
+    width: 80,
+    kind: "number",
+    render: formatPercentage,
   },
   {
     prop: "atlasLatestAsk",
@@ -54,7 +66,10 @@ const columns = [
     kind: "number",
     render: formatCurrency,
     themeOverride: (value, row) => {
-      if (parseFloat(row.msrp).toFixed(2) === parseFloat(value).toFixed(2)) {
+      if (
+        parseFloat(row.msrp).toFixed(2) === parseFloat(value).toFixed(2) ||
+        parseFloat(row.usdcLatestAsk) < parseFloat(value)
+      ) {
         return {
           bgCell: "#1F5139",
         };
@@ -68,17 +83,20 @@ const columns = [
     prop: "atlasLatestBid",
     title: "(A) Bid",
     width: 90,
-    kind: "number",
+    kind: "text",
     render: formatCurrency,
   },
   {
     prop: "usdcLatestAsk",
     title: "($) Ask",
     width: 90,
-    kind: "number",
+    kind: "text",
     render: formatCurrency,
     themeOverride: (value, row) => {
-      if (parseFloat(row.msrp).toFixed(2) === parseFloat(value).toFixed(2)) {
+      if (
+        parseFloat(row.msrp).toFixed(2) === parseFloat(value).toFixed(2) ||
+        parseFloat(row.atlasLatestAsk) < parseFloat(value)
+      ) {
         return {
           bgCell: "#1F5139",
         };
@@ -143,12 +161,34 @@ const columns = [
     render: formatCurrency,
   },
   {
-  prop: "totalDailyNet",
-  title: "Total Daily Net",
-  width: 120,
-  kind: "number",
-  render: formatCurrencyLarge,
-},
+    prop: "totalDailyNet",
+    title: "Total Daily Net",
+    width: 120,
+    kind: "number",
+    render: formatCurrencyLarge,
+  },
+
+  {
+    prop: "currentAmmoHealth",
+    title: "Ammo %",
+    width: 120,
+    kind: "number",
+    render: formatPercentage,
+  },
+  {
+    prop: "currentFoodHealth",
+    title: "Food %",
+    width: 120,
+    kind: "number",
+    render: formatPercentage,
+  },
+  {
+    prop: "currentFuelHealth",
+    title: "Fuel %",
+    width: 120,
+    kind: "number",
+    render: formatPercentage,
+  },
   {
     prop: "shipSpec",
     title: "Spec",
@@ -180,47 +220,84 @@ export default function Ships() {
         const atlas = marketMap[marketPairs[0].id] || {};
         const usdc = marketMap[marketPairs[1].id] || {};
 
-        const shipResourceData = shipData[nft.symbol];
+        console.log(`USDC`, usdc);
 
-        const grossPerDayUsdc = shipResourceData.grossRewards * priceData.rate;
-        const foodPerDayUsdc =
-          shipResourceData.foodBurn *
-          priceData.rate *
-          resourcePrices.food *
-          24 *
-          60;
-        const fuelPerDayUsdc =
-          shipResourceData.fuelBurn *
-          priceData.rate *
-          resourcePrices.fuel *
-          24 *
-          60;
-        const ammoPerDayUsdc =
-          shipResourceData.ammoBurn *
-          priceData.rate *
-          resourcePrices.ammo *
-          24 *
-          60;
-        const toolsPerDayUsdc =
-          shipResourceData.toolsBurn *
-          priceData.rate *
-          resourcePrices.tools *
-          24 *
-          60;
+        let grossPerDayUsdc = 0;
+        let foodPerDayUsdc = 0;
+        let fuelPerDayUsdc = 0;
+        let ammoPerDayUsdc = 0;
+        let toolsPerDayUsdc = 0;
+        let netPerDayUsdc = 0;
 
-        const netPerDayUsdc =
-          grossPerDayUsdc -
-          foodPerDayUsdc -
-          fuelPerDayUsdc -
-          ammoPerDayUsdc -
-          toolsPerDayUsdc;
+        const shipResourceData = usdc.shipRates;
+
+        if (shipResourceData) {
+          const MILLISECONDS_PER_DAY = 86_400_000;
+
+          grossPerDayUsdc =
+            shipResourceData.rewardRatePerSecond * priceData.rate * 60 * 24;
+          foodPerDayUsdc =
+            (MILLISECONDS_PER_DAY /
+              shipResourceData.millisecondsToBurnOneFood) *
+            priceData.rate *
+            resourcePrices.food;
+          fuelPerDayUsdc =
+            (MILLISECONDS_PER_DAY /
+              shipResourceData.millisecondsToBurnOneFuel) *
+            priceData.rate *
+            resourcePrices.fuel;
+          ammoPerDayUsdc =
+            (MILLISECONDS_PER_DAY /
+              shipResourceData.millisecondsToBurnOneArms) *
+            priceData.rate *
+            resourcePrices.ammo;
+          toolsPerDayUsdc =
+            (MILLISECONDS_PER_DAY /
+              shipResourceData.millisecondsToBurnOneToolkit) *
+            priceData.rate *
+            resourcePrices.tools;
+
+          netPerDayUsdc =
+            grossPerDayUsdc -
+            foodPerDayUsdc -
+            fuelPerDayUsdc -
+            ammoPerDayUsdc -
+            toolsPerDayUsdc;
+        }
+
+        const currentFuelHealth =
+          usdc.shipRates && usdc.stakeInfo && usdc.stakeInfo.shipsInEscrow > 0
+            ? usdc.stakeInfo.fuelInEscrow /
+              (usdc.shipRates.fuelMaxReserve * usdc.stakeInfo.shipsInEscrow)
+            : 0;
+        const currentFoodHealth =
+          usdc.shipRates && usdc.stakeInfo && usdc.stakeInfo.shipsInEscrow > 0
+            ? usdc.stakeInfo.foodInEscrow /
+              (usdc.shipRates.fuelMaxReserve * usdc.stakeInfo.shipsInEscrow)
+            : 0;
+        const currentAmmoHealth =
+          usdc.shipRates && usdc.stakeInfo && usdc.stakeInfo.shipsInEscrow > 0
+            ? usdc.stakeInfo.armsInEscrow /
+              (usdc.shipRates.armsMaxReserve * usdc.stakeInfo.shipsInEscrow)
+            : 0;
+
+        const shipsInEscrow = usdc.stakeInfo
+          ? usdc.stakeInfo.shipsInEscrow || 0
+          : 0;
+
+        console.log(
+          `RES: `,
+          currentAmmoHealth,
+          currentFoodHealth,
+          currentFuelHealth
+        );
 
         const resourceCostPerDayUsdc =
           foodPerDayUsdc + fuelPerDayUsdc + ammoPerDayUsdc + toolsPerDayUsdc;
         const resourceCostPerDay = resourceCostPerDayUsdc / priceData.rate;
 
         const usdcShipData = {
-          grossPerDay: shipResourceData.grossRewards,
+          grossPerDay: grossPerDayUsdc / priceData.rate,
           grossPerDayUsdc,
           foodPerDayUsdc,
           fuelPerDayUsdc,
@@ -231,10 +308,14 @@ export default function Ships() {
           netPerDayUsdc,
         };
 
-        const shipPriceUsdc = Math.min(
-          atlas.latestAsk * priceData.rate,
-          usdc.latestAsk
-        );
+        let shipPriceUsdc = usdc.latestAsk;
+
+        if (
+          atlas.latestAsk * priceData.rate < shipPriceUsdc &&
+          atlas.latestAsk != 0
+        ) {
+          shipPriceUsdc = atlas.latestAsk * priceData.rate;
+        }
         const apr = (netPerDayUsdc / shipPriceUsdc) * 365 * 100;
 
         let msrp = 0;
@@ -245,6 +326,8 @@ export default function Ships() {
         ) {
           msrp = nft.tradeSettings.msrp.value.toString();
         }
+
+        const percentAboveMSRP = (shipPriceUsdc - msrp) / msrp;
 
         // use reduce to add up all of the 'supply' values of each airdrop in nft.airdrops
         const airdropSupply = (nft.airdrops || []).reduce((acc, cur) => {
@@ -259,10 +342,18 @@ export default function Ships() {
 
         const totalListed = atlas.totalListed + usdc.totalListed;
         const totalSupply = airdropSupply + primarySaleSupply;
+        const totalDailyNet = totalSupply * netPerDayUsdc;
+        const totalDailyBurn = totalSupply * resourceCostPerDayUsdc;
+        const totalSupplyListed = totalListed / Math.max(totalSupply, 1);
         const totalAtOrigination =
-          parseFloat(usdc.latestAsk).toFixed(2) <= parseFloat(msrp).toFixed(2)
+          parseFloat(usdc.latestAsk).toFixed(2) == parseFloat(msrp).toFixed(2)
             ? usdc.latestAskSize
             : 0;
+
+        const primarySaleCount = nft.primarySales.length || 0;
+        const marketCap = totalSupply * (usdc.latestAsk || msrp);
+        const atlasLatestBid = atlas.latestBid * priceData.rate;
+        const atlasLatestAsk = atlas.latestAsk * priceData.rate;
 
         return {
           ...nft,
@@ -270,29 +361,34 @@ export default function Ships() {
           ...usdc.stakeInfo,
           shipRates: usdc.shipRates,
           shipSpec: [nft.attributes.spec],
+          shipsInEscrow,
           shipPriceUsdc,
-          marketCap: totalSupply * (usdc.latestAsk || msrp),
-          apr,
+          marketCap,
+          apr: apr,
           msrp: msrp,
           totalAtOrigination,
-          totalListed: totalListed,
-          totalSupplyListed: totalListed / Math.max(totalSupply, 1),
+          totalListed,
+          totalSupplyListed,
           totalSupply,
-          primarySaleCount: nft.primarySales.length || 0,
+          primarySaleCount,
           atlasBids: atlas.bids || [],
           usdcBids: usdc.bids || [],
           atlasAsks: atlas.asks,
           atlasTimestamp: atlas.timestamp,
           usdcTimestamp: usdc.timestamp,
           usdcAsks: usdc.asks,
-          atlasLatestBid: atlas.latestBid * priceData.rate,
+          atlasLatestBid,
           usdcLatestBid: usdc.latestBid,
-          atlasLatestAsk: atlas.latestAsk * priceData.rate,
+          atlasLatestAsk,
           usdcLatestAsk: usdc.latestAsk,
           atlasLastBidSize: atlas.lastBidSize,
           usdcLastAskSize: usdc.lastAskSize,
-          totalDailyNet: totalSupply * netPerDayUsdc,
-          totalDailyBurn: totalSupply * resourceCostPerDayUsdc
+          totalDailyNet,
+          totalDailyBurn,
+          currentAmmoHealth,
+          currentFuelHealth,
+          currentFoodHealth,
+          percentAboveMSRP,
         };
       })
       .sort((a, b) => {
@@ -359,8 +455,7 @@ export default function Ships() {
     source.forEach((x) => {
       if (!x.shipRates) return;
       if (isNaN(x.shipsInEscrow)) return;
-      const grossRewards =
-        (x.shipRates.rewardRatePerSecond / 1666666) * 24 * 60;
+      const grossRewards = x.shipRates.rewardRatePerSecond * 24 * 60;
 
       const fuelCost =
         (86400000 / x.shipRates.millisecondsToBurnOneFuel) *
@@ -405,7 +500,7 @@ export default function Ships() {
         <div className="font-mono text-white flex flex-col">
           <span>MARKET CAP: {formatCurrency(totalMarketCap)}</span>
           <span>TOTAL NET: {formatCurrency(totalDailyNet)}</span>
-          {/* <span>TOTAL BURN: {formatCurrency(totalDailyBurn)}</span> */}
+          <span>TOTAL BURN: {formatCurrency(totalDailyBurn)}</span>
         </div>
         <Wallet />
       </div>

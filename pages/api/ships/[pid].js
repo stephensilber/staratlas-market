@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     req.query.pid || "DsJHgpnNovjJ981QJJnqMggexAekNawbSavfV1QuTpis";
 
   const solana = new Connection(
-    "https://sparkling-dark-meadow.solana-mainnet.quiknode.pro/406b0a513cd4214db1dcd98394fa0746e1689d67/"
+    "https://frosty-dawn-snowflake.solana-mainnet.quiknode.pro/380e75fde83d58ce13804c6ffc1692c56cae26bc/"
   );
 
   const shipMintKey = new PublicKey(shipMint);
@@ -22,9 +22,12 @@ export default async function handler(req, res) {
     shipMintKey
   );
 
+  console.log(`Rewards per second: ${shipInfo.rewardRatePerSecond.toNumber()}`);
+
   // Current capcity represents seconds until the resources is depleted
+  // FIXME: WHY 1666666?!
   res.status(200).json({
-    rewardRatePerSecond: shipInfo.rewardRatePerSecond.toNumber(),
+    rewardRatePerSecond: shipInfo.rewardRatePerSecond.toNumber() / 1666666,
     fuelMaxReserve: shipInfo.fuelMaxReserve,
     foodMaxReserve: shipInfo.foodMaxReserve,
     armsMaxReserve: shipInfo.armsMaxReserve,

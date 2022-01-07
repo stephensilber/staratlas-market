@@ -165,6 +165,9 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
     [ReadyState.UNINSTANTIATED]: "Uninstantiated",
   }[readyState];
 
+  const resourcePrices = resources ? resources.resourcePrices : {};
+  const shipData = resources ? resources.shipData : {};
+
   return (
     <MarketFeedContext.Provider
       value={{
@@ -173,8 +176,8 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
         priceData,
         nfts,
         marketMap,
-        resourcePrices: resources ? resources.resourcePrices : {},
-        shipData: resources ? resources.shipData : {},
+        resourcePrices,
+        shipData,
       }}
     >
       {children}
