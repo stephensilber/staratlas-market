@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     shipMintKey
   );
 
-  console.log(`Rewards per second: ${shipInfo.rewardRatePerSecond.toNumber()}`);
+//   console.log(`Rewards per second: ${shipInfo.rewardRatePerSecond.toNumber() / (10 ** 8)}`);
 
   // Current capcity represents seconds until the resources is depleted
   // FIXME: WHY 1666666?!

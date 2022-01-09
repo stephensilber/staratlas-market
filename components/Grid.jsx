@@ -81,11 +81,9 @@ export default function Sheet({
       throw new Error("Column not found");
     }
 
-    console.log(`getData: `, ship.name, column.prop)
-
     const displayData = column.render
-    ? column.render(ship[column.prop]) || ""
-    : `${ship[column.prop] || ""}` || ""
+      ? column.render(ship[column.prop]) || ""
+      : `${ship[column.prop] || ""}` || "";
 
     return {
       kind: column.kind || GridCellKind.Markdown,
@@ -145,6 +143,9 @@ export default function Sheet({
                 cellWasDoubleClicked(row);
               } else {
                 setLastClickedCell(cell);
+                setTimeout(() => {
+                  setLastClickedCell(null);
+                }, [700]);
               }
             }}
             // rowMarkers={"number"}

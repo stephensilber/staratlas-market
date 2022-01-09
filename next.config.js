@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const withTM = require('next-transpile-modules')(['@blocto/sdk', '@project-serum/sol-wallet-adapter']);
-
+const withTM = require("next-transpile-modules")([
+  "@blocto/sdk",
+  "@project-serum/sol-wallet-adapter",
+]);
 
 module.exports = withTM({
   reactStrictMode: false,
@@ -12,5 +14,12 @@ module.exports = withTM({
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false;
+    }
+    return config;
+  },
+
   webpack5: true,
-})
+});

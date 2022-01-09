@@ -1,31 +1,58 @@
 export default async function handler(req, res) {
   const { pid } = req.query;
 
-  if (!pid) {
+  const tokens = req.query.tokens.split(",") || [];
+
+  console.log(`TOKENS `, tokens);
+
+  if (!pid || !tokens) {
     res.status(404).json({ message: "No wallet provided" });
   }
 
-  console.log(`pid`, pid);
+  const walletAddress = pid;
 
-  const response = await fetch(`https://galaxy.staratlas.com/players/${pid}`, {
-    headers: {
-      accept: "*/*",
-      "accept-language": "en-US,en;q=0.9",
-      "if-none-match": 'W/"410-6m/UKtgwIffrJv83Zo4c37/XpVM"',
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-site",
-      "sec-gpc": "1",
-      Referer: "https://play.staratlas.com/",
-      "Referrer-Policy": "strict-origin-when-cross-origin",
-    },
-    body: null,
-    method: "GET",
+  const data = tokens.map((tokenAddress) => {
+    return {
+      jsonrpc: "2.0",
+      id: 1,
+      method: "getTokenAccountsByOwner",
+      params: [
+        walletAddress,
+        {
+          mint: tokenAddress,
+        },
+        {
+          encoding: "jsonParsed",
+        },
+      ],
+    };
   });
 
-  console.log(`response`, response);
+  const response = await fetch(`https://api.mainnet-beta.solana.com`, {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 
   const json = await response.json();
 
-  res.status(200).json(json);
+  const formattedJSON = json.map((x) => {
+    const accounts = x.result.value.map((y) => {
+      return y.account.data.parsed.info;
+    });
+
+    if (accounts.length !== 1) {
+      console.error(`Multiple accounts found for `, accounts);
+      return {};
+    }
+
+    return accounts[0];
+  });
+
+  let mappedResponse = {};
+  formattedJSON.forEach((x) => {
+    mappedResponse[x.mint] = x;
+  });
+
+  res.status(200).json(mappedResponse);
 }

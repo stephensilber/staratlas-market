@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { useNotifications } from "@mantine/notifications";
 
 import useSWR from "swr";
 
@@ -15,7 +16,9 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 export const MarketFeedContext = createContext();
 
 export const MarketFeedProvider = ({ walletAddress, children }) => {
-  const { publicKey, sendTransaction } = useWallet();
+  const notifications = useNotifications();
+
+  const { publicKey } = useWallet();
 
   const [marketIds, setMarketIds] = useState([]);
   const { data: nfts } = useSWR("/api/nfts", fetcher, {
@@ -67,6 +70,7 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
         };
 
         sendMessage(JSON.stringify(subscribeL2));
+        sendMessage(JSON.stringify(subscribeL3));
         // sendMessage(JSON.stringify(subscribeL3));
       },
     },
@@ -90,29 +94,94 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
     }
     const event = JSON.parse(lastMessage.data);
 
-    if (event.type !== "l2snapshot") {
+    const isMarketInUsdc = (nft, market) => {
+      return nft.markets.filter((x) => x.id == market)[0].quotePair == "USDC";
+    };
+    const notificationTitle = (nft, event) => {
+      switch (event.type) {
+        case "fill":
+          if (event.side == "sell") {
+            return `${nft.name} sold`;
+          } else {
+            return `${nft.name} bought`;
+          }
+        case "open":
+          if (event.side == "buy") {
+            return `${nft.name} bid created`;
+          } else {
+            return `${nft.name} listed`;
+          }
+        case "done":
+          return null;
+      }
+    };
+    const notificationMessage = (nft, event) => {
+      let adjustedPrice = event.price;
+      if (!isMarketInUsdc(nft, event.market) && adjustedPrice && priceData) {
+        adjustedPrice = parseFloat(adjustedPrice * priceData.rate).toFixed(2);
+      }
+      switch (event.type) {
+        case "open":
+          if (event.side == "buy") {
+            return `Bid created at $${adjustedPrice}`;
+          } else {
+            return `Listed for $${adjustedPrice}`;
+          }
+        case "fill":
+          if (event.side == "sell") {
+            return `Sold ${event.size} at ${adjustedPrice}`;
+          } else {
+            return `Bought ${event.size} at ${adjustedPrice}`;
+          }
+        case "done":
+          return `Order done: ${event.reason}`;
+      }
+    };
+
+    if (["open", "fill", "close"].includes(event.type)) {
+      const nft = nftForMarketId(event.market);
+      notifications.showNotification({
+        title: notificationTitle(nft, event),
+        message: notificationMessage(nft, event),
+        color: event.type == "fill" ? "green" : "gray",
+        icon: (
+          <div className="w-12 h-12 rounded-md">
+            <img
+              className="w-full h-full object-cover"
+              src={nft.image}
+              alt={nft.name}
+            />
+          </div>
+        ),
+        autoClose: 10000,
+      });
+    }
+
+    if (event.type !== "l3snapshot") {
       return;
     }
 
+    const bids = event.bids.map((x) => [x.price, x.size]);
+    const asks = event.asks.map((x) => [x.price, x.size]);
+
     let latestData = {
-      bids: event.bids,
-      asks: event.asks,
+      bids: bids,
+      asks: asks,
       timestamp: event.timestamp,
-      lastUpdated: new Date(event.timestamp),
+      lastUpdated: performance.now()
     };
 
     let totalListed = 0;
 
-    if (event.bids.length > 0) {
-      latestData.latestBid = event.bids[0][0];
-      latestData.latestBidSize = event.bids[0][1];
+    if (bids.length > 0) {
+      latestData.latestBid = bids[0][0];
+      latestData.latestBidSize = bids[0][1];
     }
 
-    if (event.asks.length > 0) {
-      latestData.latestAsk = event.asks[0][0];
-      latestData.latestAskSize = event.asks[0][1];
-      event.asks.forEach((x) => {
-        console.log(`Adding ${x[1]} to total listed`);
+    if (asks.length > 0) {
+      latestData.latestAsk = asks[0][0];
+      latestData.latestAskSize = asks[0][1];
+      asks.forEach((x) => {
         totalListed = totalListed + parseInt(x[1]);
       });
     }
@@ -121,24 +190,19 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
 
     try {
       const ship = nftForMarketId(event.market);
+
+      const rateResponse = await fetch(`/api/ships/${ship.mint}`);
+      const shipRates = await rateResponse.json();
+
+      latestData.shipRates = shipRates;
+
       if (publicKey) {
         const response = await fetch(
           `/api/staking/${ship.mint}?walletAddress=${publicKey.toString()}`
         );
         const stakeInfo = await response.json();
-
         latestData.stakeInfo = stakeInfo;
-        console.log(
-          `Number of ${ship.name} listed: ${stakeInfo.shipsInEscrow}`
-        );
       }
-
-      const rateResponse = await fetch(`/api/ships/${ship.mint}`);
-      const shipRates = await rateResponse.json();
-
-      console.log(`Fetched ship rates: `, shipRates);
-
-      latestData.shipRates = shipRates;
     } catch (e) {
       console.log(e);
     }

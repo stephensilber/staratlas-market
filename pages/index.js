@@ -15,6 +15,8 @@ import {
 import dynamic from "next/dynamic";
 import { MarketFeedContext } from "../components/MarketFeedContext";
 import { Wallet } from "../components/Wallet";
+import { SwapForm } from "../components/SwapForm";
+import { SettleAllButton } from "../components/SettleButton";
 
 const Grid = dynamic(() => import("../components/Grid"), { ssr: false });
 
@@ -198,7 +200,6 @@ const columns = [
 ];
 
 export default function Ships() {
-  const [selectedMarket, setSelectedMarket] = useState(null);
   const router = useRouter();
 
   const { marketMap, nfts, shipData, resourcePrices, priceData } =
@@ -219,8 +220,6 @@ export default function Ships() {
         });
         const atlas = marketMap[marketPairs[0].id] || {};
         const usdc = marketMap[marketPairs[1].id] || {};
-
-        console.log(`USDC`, usdc);
 
         let grossPerDayUsdc = 0;
         let foodPerDayUsdc = 0;
@@ -284,13 +283,6 @@ export default function Ships() {
         const shipsInEscrow = usdc.stakeInfo
           ? usdc.stakeInfo.shipsInEscrow || 0
           : 0;
-
-        console.log(
-          `RES: `,
-          currentAmmoHealth,
-          currentFoodHealth,
-          currentFuelHealth
-        );
 
         const resourceCostPerDayUsdc =
           foodPerDayUsdc + fuelPerDayUsdc + ammoPerDayUsdc + toolsPerDayUsdc;
@@ -447,8 +439,6 @@ export default function Ships() {
     return totalValue;
   }, [source, priceData]);
 
-  console.log(`market cap`, totalMarketCap);
-
   const totalShipDailyRewards = useMemo(() => {
     if (!priceData) return 0;
     let totalValue = 0;
@@ -479,23 +469,20 @@ export default function Ships() {
     });
     return totalValue * priceData.rate;
   }, [source, priceData]);
-  //   useHotkeys([
-  //     ["ctrl+K", () => searchRef.current.focus()],
-  //     ["mod+K", () => searchRef.current.focus()],
-  //     ["ctrl+J", () => typeRef.current.focus()],
-  //     ["mod+J", () => typeRef.current.focus()],
-  //   ]);
 
   return (
     <div className="h-screen w-screen flex flex-col">
-      {selectedMarket && <Drawer position="right" size="90vw"></Drawer>}
-      <div className="flex justify-between flex-shrink-0 p-4 text-sm">
-        <div className="font-mono text-white flex flex-col">
+      <div className="flex justify-between flex-shrink-0 p-4 text-xs">
+        <div className="font-mono text-white flex flex-col font-bold">
           {priceData && <span>ATLAS PRICE: ${priceData.rate.toFixed(5)}</span>}
+          <SwapForm />
         </div>
         <div className="font-mono text-white flex flex-col">
           <span>SHIPS VALUE: {formatCurrency(totalShipValue)}</span>
           <span>DAILY NET: {formatCurrency(totalShipDailyRewards)}</span>
+          <div className="my-2">
+            <SettleAllButton />
+          </div>
         </div>
         <div className="font-mono text-white flex flex-col">
           <span>MARKET CAP: {formatCurrency(totalMarketCap)}</span>
