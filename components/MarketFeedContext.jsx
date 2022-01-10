@@ -18,21 +18,39 @@ export const MarketFeedContext = createContext();
 export const MarketFeedProvider = ({ walletAddress, children }) => {
   const notifications = useNotifications();
 
-  const { publicKey } = useWallet();
+  const wallet = useWallet();
 
   const [marketIds, setMarketIds] = useState([]);
+  const [shipInfo, setShipInfo] = useState({});
+
   const { data: nfts } = useSWR("/api/nfts", fetcher, {
     fallbackData: [],
   });
 
-  const { data: resources } = useSWR("/api/resources", fetcher, {
-    fallbackData: {},
-  });
+  const resources = {
+    food: 0.0006144,
+    fuel: 0.0014336,
+    ammo: 0.0021504,
+    tools: 0.0017408,
+  };
+  // const { data: resources } = useSWR("/api/resources", fetcher, {
+  //   fallbackData: {},
+  // });
 
   const { data: priceData } = useSWR(`/api/price`, fetcher, {
     refreshInterval: 10000,
     initialData: {},
   });
+
+  const STAKING_URL = `/api/staking/all?wallet=${wallet.publicKey}`;
+  const { data: stakeInfo } = useSWR(
+    wallet.connected ? STAKING_URL : null,
+    fetcher,
+    {
+      refreshInterval: 60000,
+      initialData: {},
+    }
+  );
 
   const messageHistory = useRef([]);
   const [marketMap, setMarketMap] = useState({});
@@ -139,6 +157,7 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
     };
 
     if (["open", "fill", "close"].includes(event.type)) {
+      if (event.side == "buy" && event.type == "fill") return;
       const nft = nftForMarketId(event.market);
       notifications.showNotification({
         title: notificationTitle(nft, event),
@@ -168,7 +187,7 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
       bids: bids,
       asks: asks,
       timestamp: event.timestamp,
-      lastUpdated: performance.now()
+      lastUpdated: performance.now(),
     };
 
     let totalListed = 0;
@@ -194,22 +213,13 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
       const rateResponse = await fetch(`/api/ships/${ship.mint}`);
       const shipRates = await rateResponse.json();
 
-      latestData.shipRates = shipRates;
-
-      if (publicKey) {
-        const response = await fetch(
-          `/api/staking/${ship.mint}?walletAddress=${publicKey.toString()}`
-        );
-        const stakeInfo = await response.json();
-        latestData.stakeInfo = stakeInfo;
-      }
+      setShipInfo((prev) => ({
+        ...prev,
+        [ship.mint]: shipRates,
+      }));
     } catch (e) {
       console.log(e);
     }
-
-    console.log(
-      `Just got a new snapshot for ${event.market} at ${latestData.lastUpdated} (${totalListed})`
-    );
 
     setMarketMap((prev) => ({
       ...prev,
@@ -229,19 +239,16 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
     [ReadyState.UNINSTANTIATED]: "Uninstantiated",
   }[readyState];
 
-  const resourcePrices = resources ? resources.resourcePrices : {};
-  const shipData = resources ? resources.shipData : {};
-
   return (
     <MarketFeedContext.Provider
       value={{
         connectionStatus,
-        messageHistory,
         priceData,
         nfts,
         marketMap,
-        resourcePrices,
-        shipData,
+        resourcePrices: resources,
+        stakeInfo,
+        shipInfo,
       }}
     >
       {children}

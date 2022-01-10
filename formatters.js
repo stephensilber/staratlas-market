@@ -63,7 +63,7 @@ export function formatNumberLarge(value) {
   if (value == "") {
     return value;
   }
-  return numeral(value).format("(0.0 a)");
+  return numeral(value).format("(0.0a)");
 }
 
 export function formatGreekNumber(value) {

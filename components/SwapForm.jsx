@@ -46,7 +46,7 @@ export const SwapForm = () => {
   const usdcBalance =
     balances[USDC_TOKEN.address].tokenAmount.uiAmount.toFixed(2);
   const atlasBalance =
-    balances[ATLAS_TOKEN.address].tokenAmount.uiAmount.toFixed(2);
+    balances[ATLAS_TOKEN.address].tokenAmount.uiAmount.toFixed(8);
 
   const fromAmountInt =
     fromAmount * 10 ** (toAtlas ? USDC_TOKEN.decimals : ATLAS_TOKEN.decimals);
@@ -141,6 +141,7 @@ export const SwapForm = () => {
         onChange={setFromAmount}
         onClickBalance={(balance) => setFromAmount(balance)}
         value={toAtlas ? humanReadableQuote : fromAmount}
+        precision={3}
       />
       <Button
         loading={loading && !swapState}
@@ -164,6 +165,7 @@ function TokenInput({
   onChange,
   value,
   onClickBalance,
+  precision = 2,
 }) {
   return (
     <NumberInput
@@ -182,7 +184,7 @@ function TokenInput({
       }
       styles={{ input: { width: 150, textAlign: "center" } }}
       disabled={!isFrom}
-      precision={2}
+      precision={precision}
       value={value}
       onChange={onChange}
       error={isFrom && parseFloat(value) > parseFloat(balance)}

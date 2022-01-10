@@ -17,8 +17,11 @@ import { MarketFeedContext } from "../components/MarketFeedContext";
 import { Wallet } from "../components/Wallet";
 import { SwapForm } from "../components/SwapForm";
 import { SettleAllButton } from "../components/SettleButton";
-
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { ResourcesOverview } from "../components/ResourcesOverview";
 const Grid = dynamic(() => import("../components/Grid"), { ssr: false });
+
+const MILLISECONDS_PER_DAY = 86_400_000;
 
 const columns = [
   {
@@ -165,31 +168,38 @@ const columns = [
   {
     prop: "totalDailyNet",
     title: "Total Daily Net",
-    width: 120,
+    width: 100,
     kind: "number",
     render: formatCurrencyLarge,
   },
 
   {
-    prop: "currentAmmoHealth",
-    title: "Ammo %",
-    width: 120,
+    prop: "totalDailyAmmoBurn",
+    title: "Ammo (daily)",
+    width: 100,
     kind: "number",
-    render: formatPercentage,
+    render: formatNumberLarge,
   },
   {
-    prop: "currentFoodHealth",
-    title: "Food %",
-    width: 120,
+    prop: "totalDailyFoodBurn",
+    title: "Food (daily)",
+    width: 100,
     kind: "number",
-    render: formatPercentage,
+    render: formatNumberLarge,
   },
   {
-    prop: "currentFuelHealth",
-    title: "Fuel %",
+    prop: "totalDailyFuelBurn",
+    title: "Fuel (daily)",
+    width: 100,
+    kind: "number",
+    render: formatNumberLarge,
+  },
+  {
+    prop: "totalDailyToolkitBurn",
+    title: "Toolkits (daily)",
     width: 120,
     kind: "number",
-    render: formatPercentage,
+    render: formatNumberLarge,
   },
   {
     prop: "shipSpec",
@@ -201,12 +211,13 @@ const columns = [
 
 export default function Ships() {
   const router = useRouter();
+  const wallet = useWallet();
 
-  const { marketMap, nfts, shipData, resourcePrices, priceData } =
+  const { marketMap, nfts, shipInfo, stakeInfo, resourcePrices, priceData } =
     useContext(MarketFeedContext);
 
   const source = useMemo(() => {
-    if (!marketMap || !shipData || !priceData || !resourcePrices) {
+    if (!marketMap || !priceData || !resourcePrices) {
       return [];
     }
     return nfts
@@ -221,6 +232,12 @@ export default function Ships() {
         const atlas = marketMap[marketPairs[0].id] || {};
         const usdc = marketMap[marketPairs[1].id] || {};
 
+        // Contains rewards per second, max reserves, time to burn resources
+        const ship = shipInfo ? shipInfo[nft.mint] : {};
+
+        // Contains data specific to the user's staked ship (quantities in escrow, timestamps, etc)
+        const shipStake = stakeInfo ? stakeInfo[nft.mint] : {};
+
         let grossPerDayUsdc = 0;
         let foodPerDayUsdc = 0;
         let fuelPerDayUsdc = 0;
@@ -228,31 +245,39 @@ export default function Ships() {
         let toolsPerDayUsdc = 0;
         let netPerDayUsdc = 0;
 
-        const shipResourceData = usdc.shipRates;
+        let totalDailyAmmoBurn = 0;
+        let totalDailyFuelBurn = 0;
+        let totalDailyFoodBurn = 0;
+        let totalDailyToolkitBurn = 0;
 
-        if (shipResourceData) {
-          const MILLISECONDS_PER_DAY = 86_400_000;
+        const primarySaleCount = nft.primarySales.length || 0;
 
-          grossPerDayUsdc =
-            shipResourceData.rewardRatePerSecond * priceData.rate * 60 * 24;
+        if (ship) {
+          totalDailyAmmoBurn =
+            MILLISECONDS_PER_DAY / ship.millisecondsToBurnOneArms;
+          totalDailyFuelBurn =
+            MILLISECONDS_PER_DAY / ship.millisecondsToBurnOneFuel;
+          totalDailyFoodBurn =
+            MILLISECONDS_PER_DAY / ship.millisecondsToBurnOneFood;
+          totalDailyToolkitBurn =
+            MILLISECONDS_PER_DAY / ship.millisecondsToBurnOneToolkit;
+
+          const primarySaleCount = nft.primarySales.length || 0;
+          grossPerDayUsdc = ship.rewardRatePerSecond * priceData.rate * 60 * 24;
           foodPerDayUsdc =
-            (MILLISECONDS_PER_DAY /
-              shipResourceData.millisecondsToBurnOneFood) *
+            (MILLISECONDS_PER_DAY / ship.millisecondsToBurnOneFood) *
             priceData.rate *
             resourcePrices.food;
           fuelPerDayUsdc =
-            (MILLISECONDS_PER_DAY /
-              shipResourceData.millisecondsToBurnOneFuel) *
+            (MILLISECONDS_PER_DAY / ship.millisecondsToBurnOneFuel) *
             priceData.rate *
             resourcePrices.fuel;
           ammoPerDayUsdc =
-            (MILLISECONDS_PER_DAY /
-              shipResourceData.millisecondsToBurnOneArms) *
+            (MILLISECONDS_PER_DAY / ship.millisecondsToBurnOneArms) *
             priceData.rate *
             resourcePrices.ammo;
           toolsPerDayUsdc =
-            (MILLISECONDS_PER_DAY /
-              shipResourceData.millisecondsToBurnOneToolkit) *
+            (MILLISECONDS_PER_DAY / ship.millisecondsToBurnOneToolkit) *
             priceData.rate *
             resourcePrices.tools;
 
@@ -265,23 +290,23 @@ export default function Ships() {
         }
 
         const currentFuelHealth =
-          usdc.shipRates && usdc.stakeInfo && usdc.stakeInfo.shipsInEscrow > 0
-            ? usdc.stakeInfo.fuelInEscrow /
-              (usdc.shipRates.fuelMaxReserve * usdc.stakeInfo.shipsInEscrow)
+          ship && shipStake && shipStake.shipQuantityInEscrow > 0
+            ? shipStake.fuelQuantityInEscrow /
+              (ship.fuelMaxReserve * shipStake.shipQuantityInEscrow)
             : 0;
         const currentFoodHealth =
-          usdc.shipRates && usdc.stakeInfo && usdc.stakeInfo.shipsInEscrow > 0
-            ? usdc.stakeInfo.foodInEscrow /
-              (usdc.shipRates.fuelMaxReserve * usdc.stakeInfo.shipsInEscrow)
+          ship && shipStake && shipStake.shipQuantityInEscrow > 0
+            ? shipStake.foodQuantityInEscrow /
+              (ship.fuelMaxReserve * shipStake.shipQuantityInEscrow)
             : 0;
         const currentAmmoHealth =
-          usdc.shipRates && usdc.stakeInfo && usdc.stakeInfo.shipsInEscrow > 0
-            ? usdc.stakeInfo.armsInEscrow /
-              (usdc.shipRates.armsMaxReserve * usdc.stakeInfo.shipsInEscrow)
+          ship && shipStake && shipStake.shipQuantityInEscrow > 0
+            ? shipStake.armsQuantityInEscrow /
+              (ship.armsMaxReserve * shipStake.shipQuantityInEscrow)
             : 0;
 
-        const shipsInEscrow = usdc.stakeInfo
-          ? usdc.stakeInfo.shipsInEscrow || 0
+        const shipsInEscrow = shipStake
+          ? shipStake.shipQuantityInEscrow || 0
           : 0;
 
         const resourceCostPerDayUsdc =
@@ -342,7 +367,6 @@ export default function Ships() {
             ? usdc.latestAskSize
             : 0;
 
-        const primarySaleCount = nft.primarySales.length || 0;
         const marketCap = totalSupply * (usdc.latestAsk || msrp);
         const atlasLatestBid = atlas.latestBid * priceData.rate;
         const atlasLatestAsk = atlas.latestAsk * priceData.rate;
@@ -350,8 +374,9 @@ export default function Ships() {
         return {
           ...nft,
           ...usdcShipData,
-          ...usdc.stakeInfo,
-          shipRates: usdc.shipRates,
+          ...usdc.shipStake,
+          lastUpdated: usdc.lastUpdated,
+          ship: ship,
           shipSpec: [nft.attributes.spec],
           shipsInEscrow,
           shipPriceUsdc,
@@ -381,6 +406,10 @@ export default function Ships() {
           currentFuelHealth,
           currentFoodHealth,
           percentAboveMSRP,
+          totalDailyAmmoBurn,
+          totalDailyFuelBurn,
+          totalDailyFoodBurn,
+          totalDailyToolkitBurn,
         };
       })
       .sort((a, b) => {
@@ -388,7 +417,7 @@ export default function Ships() {
           return -1;
         }
         if (isNaN(b.apr)) {
-          return 1;
+          return -1;
         }
 
         if (a.apr > b.apr) {
@@ -397,7 +426,7 @@ export default function Ships() {
           return 1;
         }
       });
-  }, [marketMap, nfts, shipData]);
+  }, [marketMap, nfts, shipInfo, stakeInfo]);
 
   const totalShipValue = useMemo(() => {
     let totalValue = 0;
@@ -443,22 +472,18 @@ export default function Ships() {
     if (!priceData) return 0;
     let totalValue = 0;
     source.forEach((x) => {
-      if (!x.shipRates) return;
+      if (!x.ship) return;
       if (isNaN(x.shipsInEscrow)) return;
-      const grossRewards = x.shipRates.rewardRatePerSecond * 24 * 60;
+      const grossRewards = x.ship.rewardRatePerSecond * 24 * 60;
 
       const fuelCost =
-        (86400000 / x.shipRates.millisecondsToBurnOneFuel) *
-        resourcePrices.fuel;
+        (86400000 / x.ship.millisecondsToBurnOneFuel) * resourcePrices.fuel;
       const ammoCost =
-        (86400000 / x.shipRates.millisecondsToBurnOneArms) *
-        resourcePrices.ammo;
+        (86400000 / x.ship.millisecondsToBurnOneArms) * resourcePrices.ammo;
       const toolCost =
-        (86400000 / x.shipRates.millisecondsToBurnOneToolkit) *
-        resourcePrices.tools;
+        (86400000 / x.ship.millisecondsToBurnOneToolkit) * resourcePrices.tools;
       const foodCost =
-        (86400000 / x.shipRates.millisecondsToBurnOneFood) *
-        resourcePrices.food;
+        (86400000 / x.ship.millisecondsToBurnOneFood) * resourcePrices.food;
       const burnCost =
         (fuelCost + ammoCost + toolCost + foodCost) * priceData.rate;
 
@@ -469,6 +494,28 @@ export default function Ships() {
     });
     return totalValue * priceData.rate;
   }, [source, priceData]);
+
+  const totalShipResourceBurnRates = useMemo(() => {
+    if (!priceData) return 0;
+    let totalAmmo = 0;
+    let totalFood = 0;
+    let totalFuel = 0;
+    let totalTools = 0;
+    source.forEach((x) => {
+      if (!x.ship) return;
+      if (isNaN(x.shipsInEscrow)) return;
+      totalAmmo += x.shipsInEscrow * x.totalDailyAmmoBurn;
+      totalFood += x.shipsInEscrow * x.totalDailyFoodBurn;
+      totalFuel += x.shipsInEscrow * x.totalDailyFuelBurn;
+      totalTools += x.shipsInEscrow * x.totalDailyToolkitBurn;
+    });
+    return {
+      ammoBurn: totalAmmo,
+      foodBurn: totalFood,
+      fuelBurn: totalFuel,
+      toolsBurn: totalTools,
+    };
+  }, [source, priceData, shipInfo]);
 
   return (
     <div className="h-screen w-screen flex flex-col">
@@ -489,6 +536,7 @@ export default function Ships() {
           <span>TOTAL NET: {formatCurrency(totalDailyNet)}</span>
           <span>TOTAL BURN: {formatCurrency(totalDailyBurn)}</span>
         </div>
+        <ResourcesOverview {...totalShipResourceBurnRates} foodBurn={totalShipResourceBurnRates.foodBurn} />
         <Wallet />
       </div>
 

@@ -90,7 +90,7 @@ export default function Sheet({
       displayData: displayData,
       data: ship[column.prop],
       allowOverlay: false,
-      lastUpdated: ship.lastUpdated,
+      lastUpdated: column.prop == "name" ? ship.lastUpdated : null,
       themeOverride: column.themeOverride
         ? column.themeOverride(ship[column.prop], ship)
         : null,
