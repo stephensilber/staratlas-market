@@ -39,19 +39,20 @@ export default async function handler(req, res) {
     walletKey
   );
 
-  console.log(`account`, account, info);
 
-  // Current capcity represents seconds until the resources is depleted
-  res.status(200).json({
+  const response = {
     shipsInEscrow: info.shipQuantityInEscrow.toNumber(),
-    foodInEscrow: info.foodQuantityInEscrow.toNumber(),
-    fuelInEscrow: info.fuelQuantityInEscrow.toNumber(),
-    armsInEscrow: info.armsQuantityInEscrow.toNumber(),
+    foodQuantityInEscrow: info.foodQuantityInEscrow.toNumber(),
+    fuelQuantityInEscrow: info.fuelQuantityInEscrow.toNumber(),
+    armsQuantityInEscrow: info.armsQuantityInEscrow.toNumber(),
     fuelCurrentCapacity: info.fuelCurrentCapacity.toNumber(),
     foodCurrentCapacity: info.foodCurrentCapacity.toNumber(),
     armsCurrentCapacity: info.armsCurrentCapacity.toNumber(),
     healthCurrentCapacity: info.healthCurrentCapacity.toNumber(),
     rewardsPending: info.pendingRewards.toNumber(),
     totalRewardsPaid: info.totalRewardsPaid.toNumber(),
-  });
+  }
+  console.log(`account`, account, response);
+  // Current capcity represents seconds until the resources is depleted
+  res.status(200).json(response);
 }

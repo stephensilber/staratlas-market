@@ -24,35 +24,35 @@ const Grid = dynamic(() => import("../components/Grid"), { ssr: false });
 const MILLISECONDS_PER_DAY = 86_400_000;
 
 const columns = [
-  {
-    prop: "symbol",
-    title: "Symbol",
-    width: 100,
-    kind: "text",
-  },
+  // {
+  //   prop: "symbol",
+  //   title: "Symbol",
+  //   width: 100,
+  //   kind: "text",
+  // },
   {
     prop: "name",
     title: "Name",
-    width: 200,
+    width: 180,
     kind: "text",
   },
   {
     prop: "shipsInEscrow",
-    title: "Deployed",
-    width: 67,
+    title: "Fleet",
+    width: 48,
     kind: "text",
   },
   {
     prop: "apr",
     title: "APR (%)",
-    width: 80,
+    width: 70,
     kind: "number",
     render: formatRelativePercentage,
   },
   {
     prop: "msrp",
     title: "MSRP",
-    width: 80,
+    width: 70,
     kind: "number",
     // render: formatNumberLarge
     //   render: (value) => "$" + value.toFixed(2),
@@ -65,16 +65,13 @@ const columns = [
     render: formatPercentage,
   },
   {
-    prop: "atlasLatestAsk",
-    title: "(A) Ask",
+    prop: "atlasLatestBid",
+    title: "(A) Bid",
     width: 90,
-    kind: "number",
+    kind: "text",
     render: formatCurrency,
     themeOverride: (value, row) => {
-      if (
-        parseFloat(row.msrp).toFixed(2) === parseFloat(value).toFixed(2) ||
-        parseFloat(row.usdcLatestAsk) < parseFloat(value)
-      ) {
+      if (parseFloat(row.usdcLatestBid) < parseFloat(value)) {
         return {
           bgCell: "#1F5139",
         };
@@ -85,11 +82,48 @@ const columns = [
     },
   },
   {
-    prop: "atlasLatestBid",
-    title: "(A) Bid",
+    prop: "atlasLatestAsk",
+    title: "(A) Ask",
     width: 90,
-    kind: "text",
+    kind: "number",
     render: formatCurrency,
+    themeOverride: (value, row) => {
+      if (
+        parseFloat(row.msrp).toFixed(2) === parseFloat(value).toFixed(2) ||
+        parseFloat(row.usdcLatestAsk) > parseFloat(value)
+      ) {
+        return {
+          bgCell: "#1F5139",
+        };
+      }
+      return {
+        bgCell: "rgb(0, 0, 0, 0.0)",
+      };
+    },
+  },
+
+  {
+    prop: "benSpacer",
+    title: " ",
+    width: 30,
+    kind: "text",
+  },
+  {
+    prop: "usdcLatestBid",
+    title: "($) Bid",
+    width: 90,
+    kind: "number",
+    render: formatCurrency,
+    themeOverride: (value, row) => {
+      if (parseFloat(row.atlasLatestBid) < parseFloat(value)) {
+        return {
+          bgCell: "#1F5139",
+        };
+      }
+      return {
+        bgCell: "rgb(0, 0, 0, 0.0)",
+      };
+    },
   },
   {
     prop: "usdcLatestAsk",
@@ -100,7 +134,7 @@ const columns = [
     themeOverride: (value, row) => {
       if (
         parseFloat(row.msrp).toFixed(2) === parseFloat(value).toFixed(2) ||
-        parseFloat(row.atlasLatestAsk) < parseFloat(value)
+        parseFloat(row.atlasLatestAsk) > parseFloat(value)
       ) {
         return {
           bgCell: "#1F5139",
@@ -112,17 +146,11 @@ const columns = [
     },
   },
   {
-    prop: "usdcLatestBid",
-    title: "($) Bid",
-    width: 90,
-    kind: "number",
-    render: formatCurrency,
-  },
-  {
     prop: "totalSupply",
     title: "Supply",
-    width: 80,
+    width: 70,
     kind: "number",
+    render: formatNumberLarge,
   },
   {
     prop: "marketCap",
@@ -141,7 +169,7 @@ const columns = [
   {
     prop: "totalAtOrigination",
     title: "≤ MSRP",
-    width: 90,
+    width: 60,
     kind: "number",
   },
   {
@@ -174,37 +202,77 @@ const columns = [
   },
 
   {
-    prop: "totalDailyAmmoBurn",
-    title: "Ammo (daily)",
+    prop: "ammoHealth",
+    title: "Ammo (%)",
     width: 100,
     kind: "number",
-    render: formatNumberLarge,
+    render: formatPercentage,
+    themeOverride: (value, row) => {
+      if (parseFloat(value) < 0.2) {
+        return {
+          bgCell: "#F87171",
+        };
+      }
+      return {
+        bgCell: "rgb(0, 0, 0, 0.0)",
+      };
+    },
   },
   {
-    prop: "totalDailyFoodBurn",
-    title: "Food (daily)",
+    prop: "foodHealth",
+    title: "Food (%)",
     width: 100,
     kind: "number",
-    render: formatNumberLarge,
+    render: formatPercentage,
+    themeOverride: (value, row) => {
+      if (parseFloat(value) < 0.2) {
+        return {
+          bgCell: "#F87171",
+        };
+      }
+      return {
+        bgCell: "rgb(0, 0, 0, 0.0)",
+      };
+    },
   },
   {
-    prop: "totalDailyFuelBurn",
-    title: "Fuel (daily)",
+    prop: "fuelHealth",
+    title: "Fuel (%)",
     width: 100,
     kind: "number",
-    render: formatNumberLarge,
+    render: formatPercentage,
+    themeOverride: (value, row) => {
+      if (parseFloat(value) < 0.2) {
+        return {
+          bgCell: "#F87171",
+        };
+      }
+      return {
+        bgCell: "rgb(0, 0, 0, 0.0)",
+      };
+    },
   },
   {
-    prop: "totalDailyToolkitBurn",
-    title: "Toolkits (daily)",
-    width: 120,
+    prop: "toolsHealth",
+    title: "Tools (%)",
+    width: 100,
     kind: "number",
-    render: formatNumberLarge,
+    render: formatPercentage,
+    themeOverride: (value, row) => {
+      if (parseFloat(value) < 0.2) {
+        return {
+          bgCell: "#F87171",
+        };
+      }
+      return {
+        bgCell: "rgb(0, 0, 0, 0.0)",
+      };
+    },
   },
   {
     prop: "shipSpec",
     title: "Spec",
-    width: 150,
+    width: 120,
     kind: "bubble",
   },
 ];
@@ -287,6 +355,72 @@ export default function Ships() {
             fuelPerDayUsdc -
             ammoPerDayUsdc -
             toolsPerDayUsdc;
+        }
+
+        let resourceSummary = {};
+
+        if (shipStake) {
+          const now = new Date();
+          const lastFueled = new Date(shipStake.fueledAtTimestamp * 1000);
+          const lastFed = new Date(shipStake.fedAtTimestamp * 1000);
+          const lastArmed = new Date(shipStake.armedAtTimestamp * 1000);
+          const lastRepaired = new Date(shipStake.repairedAtTimestamp * 1000);
+
+          const secondsSinceFueled = (now - lastFueled) / 1000;
+          const secondsSinceFed = (now - lastFed) / 1000;
+          const secondsSinceArmed = (now - lastArmed) / 1000;
+          const secondsSinceRepaired = (now - lastRepaired) / 1000;
+
+          const secondsToFullyBurnFuel =
+            (ship.millisecondsToBurnOneFuel * ship.fuelMaxReserve) / 1000;
+          const secondsToFullyBurnFood =
+            (ship.millisecondsToBurnOneFood * ship.foodMaxReserve) / 1000;
+          const secondsToFullyBurnAmmo =
+            (ship.millisecondsToBurnOneArms * ship.armsMaxReserve) / 1000;
+          const secondsToFullyBurnTools =
+            (ship.millisecondsToBurnOneToolkit * ship.toolkitMaxReserve) / 1000;
+
+          const fuelHealth = 1 - secondsSinceFueled / secondsToFullyBurnFuel;
+          const foodHealth = 1 - secondsSinceFed / secondsToFullyBurnFood;
+          const ammoHealth = 1 - secondsSinceArmed / secondsToFullyBurnAmmo;
+          const toolsHealth =
+            1 - secondsSinceRepaired / secondsToFullyBurnTools;
+
+          const fuelTotal = (ship.fuelMaxReserve * shipStake.shipQuantityInEscrow)
+          const foodTotal = (ship.foodMaxReserve * shipStake.shipQuantityInEscrow)
+          const ammoTotal = (ship.armsMaxReserve * shipStake.shipQuantityInEscrow)
+          const toolsTotal = (ship.toolkitMaxReserve * shipStake.shipQuantityInEscrow)
+
+          const remainingFuel = fuelHealth * fuelTotal;
+          const remainingFood = foodHealth * foodTotal;
+          const remainingAmmo = ammoHealth * ammoTotal;
+          const remainingTools = toolsHealth * toolsTotal;
+
+          const fuelNeededToFill = fuelTotal - remainingFuel;
+          const foodNeededtoFill = foodTotal - remainingFood;
+          const ammoNeededToFill = ammoTotal - remainingAmmo;
+          const toolsNeededToFill = toolsTotal - remainingTools;
+
+          resourceSummary = {
+            lastFueled,
+            lastFed,
+            lastArmed,
+            lastRepaired,
+            remainingAmmo,
+            remainingFood,
+            remainingFuel,
+            remainingTools,
+            fuelHealth,
+            foodHealth,
+            ammoHealth,
+            toolsHealth,
+            fuelNeededToFill,
+            foodNeededtoFill,
+            ammoNeededToFill,
+            toolsNeededToFill,
+          };
+
+          console.log(`Resource for ${nft.name}: `, resourceSummary);
         }
 
         const currentFuelHealth =
@@ -375,6 +509,7 @@ export default function Ships() {
           ...nft,
           ...usdcShipData,
           ...usdc.shipStake,
+          ...resourceSummary,
           lastUpdated: usdc.lastUpdated,
           ship: ship,
           shipSpec: [nft.attributes.spec],
@@ -495,52 +630,54 @@ export default function Ships() {
     return totalValue * priceData.rate;
   }, [source, priceData]);
 
-  const totalShipResourceBurnRates = useMemo(() => {
+  const totalShipResourcesNeeded = useMemo(() => {
     if (!priceData) return 0;
     let totalAmmo = 0;
     let totalFood = 0;
     let totalFuel = 0;
     let totalTools = 0;
+    let ammoNeeded = 0;
+    let foodNeeded = 0;
+    let fuelNeeded = 0;
+    let toolsNeeded = 0;
     source.forEach((x) => {
       if (!x.ship) return;
       if (isNaN(x.shipsInEscrow)) return;
-      totalAmmo += x.shipsInEscrow * x.totalDailyAmmoBurn;
-      totalFood += x.shipsInEscrow * x.totalDailyFoodBurn;
-      totalFuel += x.shipsInEscrow * x.totalDailyFuelBurn;
-      totalTools += x.shipsInEscrow * x.totalDailyToolkitBurn;
+      if (isNaN(x.ammoNeededToFill)) {
+        return;
+      }
+
+      totalAmmo += x.ship.armsMaxReserve;
+      totalFood += x.ship.foodMaxReserve;
+      totalFuel += x.ship.fuelMaxReserve;
+      totalTools += x.ship.toolkitMaxReserve;
+      ammoNeeded += x.ammoNeededToFill;
+      foodNeeded += x.foodNeededtoFill;
+      fuelNeeded += x.fuelNeededToFill;
+      toolsNeeded += x.toolsNeededToFill;
+      console.log(
+        `Adding resources to totals needed for ${x.name}`,
+        totalAmmo,
+        totalFood,
+        totalFuel,
+        totalTools
+      );
     });
     return {
-      ammoBurn: totalAmmo,
-      foodBurn: totalFood,
-      fuelBurn: totalFuel,
-      toolsBurn: totalTools,
+      totalAmmo,
+      totalFood,
+      totalFuel,
+      totalTools,
+      ammoNeeded,
+      foodNeeded,
+      toolsNeeded,
+      fuelNeeded,
     };
   }, [source, priceData, shipInfo]);
 
   return (
-    <div className="h-screen w-screen flex flex-col">
-      <div className="flex justify-between flex-shrink-0 p-4 text-xs">
-        <div className="font-mono text-white flex flex-col font-bold">
-          {priceData && <span>ATLAS PRICE: ${priceData.rate.toFixed(5)}</span>}
-          <SwapForm />
-        </div>
-        <div className="font-mono text-white flex flex-col">
-          <span>SHIPS VALUE: {formatCurrency(totalShipValue)}</span>
-          <span>DAILY NET: {formatCurrency(totalShipDailyRewards)}</span>
-          <div className="my-2">
-            <SettleAllButton />
-          </div>
-        </div>
-        <div className="font-mono text-white flex flex-col">
-          <span>MARKET CAP: {formatCurrency(totalMarketCap)}</span>
-          <span>TOTAL NET: {formatCurrency(totalDailyNet)}</span>
-          <span>TOTAL BURN: {formatCurrency(totalDailyBurn)}</span>
-        </div>
-        <ResourcesOverview {...totalShipResourceBurnRates} foodBurn={totalShipResourceBurnRates.foodBurn} />
-        <Wallet />
-      </div>
-
-      <div className="flex-grow flex-shrink h-full w-full">
+    <div className="h-screen max-h-[100vh] max-w-screen flex flex-row">
+      <div className="flex-grow flex-shrink h-screen w-[75%]">
         <Grid
           source={source}
           defaultSortColumn={"apr"}
@@ -550,6 +687,45 @@ export default function Ships() {
             //   setSelectedMarket(row.markets[0].id);
           }}
         />
+      </div>
+      <div className="flex flex-col gap-y-12 flex-shrink-0 p-4 text-xs w-[25%] ">
+        <Wallet />
+        <div className="font-mono flex flex-col font-bold gap-y-1">
+          {priceData && (
+            <span className="my-2">
+              ATLAS PRICE: ${priceData.rate.toFixed(5)}
+            </span>
+          )}
+          <span>MARKET CAP: {formatCurrency(totalMarketCap)}</span>
+          <span>DAILY RWRD: {formatCurrency(totalDailyNet)}</span>
+          <span>DAILY BURN: {formatCurrency(totalDailyBurn)}</span>
+        </div>
+        <div className="font-mono flex flex-col"></div>
+        <div className="flex flex-col gap-y-2">
+          <h3 className="font-bold text-sm">Resources</h3>
+          <ResourcesOverview {...totalShipResourcesNeeded} />
+        </div>
+        <div className="font-bold flex flex-col gap-y-2">
+          <h3 className="font-bold text-sm">NAV</h3>
+          <div className="font-bold flex flex-col gap-y-0">
+            <span className="font-mono ">
+              FLEET VALUE: {formatCurrency(totalShipValue)}
+            </span>
+            <span className="font-mono ">
+              DAILY YIELD: {formatCurrency(totalShipDailyRewards)} (
+              {formatPercentage(totalShipDailyRewards / totalShipValue)})
+            </span>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-y-3">
+          <h3 className="font-bold text-sm">Token Swap</h3>
+          <SwapForm />
+        </div>
+        <div className="flex flex-col gap-y-3">
+          <h3 className="font-bold text-sm">Settlements</h3>
+          <SettleAllButton />
+        </div>
       </div>
     </div>
   );

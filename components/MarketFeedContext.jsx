@@ -21,7 +21,7 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
   const wallet = useWallet();
 
   const [marketIds, setMarketIds] = useState([]);
-  const [shipInfo, setShipInfo] = useState({});
+  const [showNotification, setShowNotifications] = useState(false);
 
   const { data: nfts } = useSWR("/api/nfts", fetcher, {
     fallbackData: [],
@@ -33,12 +33,13 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
     ammo: 0.0021504,
     tools: 0.0017408,
   };
-  // const { data: resources } = useSWR("/api/resources", fetcher, {
-  //   fallbackData: {},
-  // });
 
   const { data: priceData } = useSWR(`/api/price`, fetcher, {
     refreshInterval: 10000,
+    initialData: {},
+  });
+
+  const { data: shipInfo } = useSWR(`/api/ships/all`, fetcher, {
     initialData: {},
   });
 
@@ -156,7 +157,7 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
       }
     };
 
-    if (["open", "fill", "close"].includes(event.type)) {
+    if (showNotification && ["open", "fill", "close"].includes(event.type)) {
       if (event.side == "buy" && event.type == "fill") return;
       const nft = nftForMarketId(event.market);
       notifications.showNotification({
@@ -206,20 +207,6 @@ export const MarketFeedProvider = ({ walletAddress, children }) => {
     }
 
     latestData.totalListed = totalListed;
-
-    try {
-      const ship = nftForMarketId(event.market);
-
-      const rateResponse = await fetch(`/api/ships/${ship.mint}`);
-      const shipRates = await rateResponse.json();
-
-      setShipInfo((prev) => ({
-        ...prev,
-        [ship.mint]: shipRates,
-      }));
-    } catch (e) {
-      console.log(e);
-    }
 
     setMarketMap((prev) => ({
       ...prev,

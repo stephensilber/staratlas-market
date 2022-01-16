@@ -13,10 +13,14 @@ const RESOURCE_ADDRESSES = [
 ];
 
 export const ResourcesOverview = ({
-  ammoBurn,
-  fuelBurn,
-  foodBurn,
-  toolsBurn,
+  totalAmmo,
+  ammoNeeded,
+  totalFuel,
+  fuelNeeded,
+  totalFood,
+  foodNeeded,
+  totalTools,
+  toolsNeeded,
 }) => {
   const wallet = useWallet();
 
@@ -52,60 +56,70 @@ export const ResourcesOverview = ({
 
   return (
     <>
-      {loadingBalances && <Loader />}
-      {!loadingBalances && (
-        <div className="flex flex-col gap-y-1 font-mono font-bold">
-          <span
-            className={
-              ammoBalance < 10_000 || (ammoBurn && ammoBalance < ammoBurn)
-                ? "text-red-400"
-                : ""
-            }
-          >
-            Ammo: {formatNumberLarge(ammoBalance)}{" "}
-            {ammoBurn &&
-              !isNaN(ammoBurn) &&
-              `(${formatNumberLarge(ammoBurn)}/day)`}
-          </span>
-          <span
-            className={
-              foodBalance < 10_000 || (foodBurn && foodBalance < foodBurn)
-                ? "text-red-400"
-                : ""
-            }
-          >
-            Food: {formatNumberLarge(foodBalance)}{" "}
-            {foodBurn &&
-              !isNaN(foodBurn) &&
-              `(${formatNumberLarge(foodBurn)}/day)`}
-          </span>
-          <span
-            className={
-              fuelBalance < 10_000 || (fuelBurn && fuelBalance < fuelBurn)
-                ? "text-red-400"
-                : ""
-            }
-          >
-            Fuel: {formatNumberLarge(fuelBalance)}{" "}
-            {fuelBurn &&
-              !isNaN(fuelBurn) &&
-              `(${formatNumberLarge(fuelBurn)}/day)`}
-          </span>
-          <span
-            className={
-              toolkitBalance < 10_000 ||
-              (toolsBurn && toolkitBalance < toolsBurn)
-                ? "text-red-400"
-                : ""
-            }
-          >
-            Tool: {formatNumberLarge(toolkitBalance)}{" "}
-            {toolsBurn &&
-              !isNaN(toolsBurn) &&
-              `(${formatNumberLarge(toolsBurn)}/day)`}
-          </span>
-        </div>
-      )}
+      <div className="flex flex-col gap-y-1 font-mono font-bold">
+        <ResourceRow
+          name="Ammo"
+          balance={ammoBalance}
+          needed={ammoNeeded}
+          total={totalAmmo}
+          isValidating={loadingBalances}
+        />
+        <ResourceRow
+          name="Food"
+          balance={foodBalance}
+          needed={foodNeeded}
+          total={totalFood}
+          isValidating={loadingBalances}
+        />
+        <ResourceRow
+          name="Fuel"
+          balance={fuelBalance}
+          needed={fuelNeeded}
+          total={totalFuel}
+          isValidating={loadingBalances}
+        />
+        <ResourceRow
+          name="Tool"
+          balance={toolkitBalance}
+          needed={toolsNeeded}
+          total={totalTools}
+          isValidating={loadingBalances}
+        />
+      </div>
     </>
   );
 };
+
+function ResourceRow({
+  name,
+  balance,
+  needed,
+  total,
+  isValidating,
+  lowBalanceAmount = 10_000,
+}) {
+  return (
+    <span
+      className={`flex gap-x-2 items-center ${
+        balance < lowBalanceAmount || (needed && balance < needed)
+          ? "text-red-400"
+          : ""
+      }`}
+    >
+      {name}:{" "}
+      {isValidating && (!balance || !needed) && (
+        <Loader color="white" size="xs" variant="dots" />
+      )}
+      {balance && needed && (
+        <>
+          {formatNumberLarge(balance)}{" "}
+          {needed &&
+            !isNaN(needed) &&
+            `(${formatNumberLarge(needed)} / ${formatNumberLarge(
+              total
+            )} needed)`}
+        </>
+      )}
+    </span>
+  );
+}

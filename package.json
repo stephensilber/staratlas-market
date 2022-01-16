@@ -23,7 +23,7 @@
     "@solana/wallet-adapter-react-ui": "^0.8.0",
     "@solana/wallet-adapter-wallets": "^0.14.0",
     "@solana/web3.js": "^1.31.0",
-    "@staratlas/factory": "^0.1.25",
+    "@staratlas/factory": "https://github.com/staratlasmeta/factory#93c7d91",
     "@supabase/supabase-js": "^1.29.1",
     "autoprefixer": "^10.3.4",
     "cheerio": "^1.0.0-rc.10",

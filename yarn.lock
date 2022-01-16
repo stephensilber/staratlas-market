@@ -1122,10 +1122,9 @@
     superstruct "^0.14.2"
     tweetnacl "^1.0.0"
 
-"@staratlas/factory@^0.1.25":
+"@staratlas/factory@https://github.com/staratlasmeta/factory#93c7d91":
   version "0.1.25"
-  resolved "https://registry.yarnpkg.com/@staratlas/factory/-/factory-0.1.25.tgz#17b0baffc863b57bc2f0121fa5adeac16738ab2e"
-  integrity sha512-zwM6oj4eqonaZKsYbrJZoUv8r4BzS0wh4Y8ZwVEZxHYkcjlysTpcCFvQ1bbjvfq8xszkyNDlHU+woW3ECP6Vzw==
+  resolved "https://github.com/staratlasmeta/factory#93c7d9181a9a2466c790e186733decf6fb759233"
   dependencies:
     "@project-serum/anchor" "^0.18.2"
     "@solana/spl-token" "^0.1.8"

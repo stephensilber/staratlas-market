@@ -120,7 +120,7 @@ export const SwapForm = () => {
   };
 
   return (
-    <div className="flex gap-x-4 items-end">
+    <div className="flex flex-col gap-y-4 items-stretch">
       <TokenInput
         token={USDC_TOKEN}
         isFrom={toAtlas}
@@ -182,7 +182,7 @@ function TokenInput({
           {!loadingBalances ? `Balance: ${balance}` : "Loading..."}
         </span>
       }
-      styles={{ input: { width: 150, textAlign: "center" } }}
+      styles={{ input: { textAlign: "center" } }}
       disabled={!isFrom}
       precision={precision}
       value={value}
@@ -201,7 +201,7 @@ function TokenInput({
 
 function SwapIcon({ toAtlas }) {
   return (
-    <>
+    <div className="transform rotate-90">
       {!toAtlas && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -235,6 +235,6 @@ function SwapIcon({ toAtlas }) {
           />
         </svg>
       )}
-    </>
+    </div>
   );
 }
